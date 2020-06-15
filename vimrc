@@ -14,7 +14,6 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 let g:deoplete#enable_at_startup = 1
-" let g:deoplete#enable_yarp = 1
 call plug#end()
 
 set nocompatible
@@ -26,9 +25,14 @@ set softtabstop=4
 set tabstop=4
 set nu
 set backspace=2
-set ignorecase
+set guifont=Monaco:h14
 
+" fzf
 noremap <c-p> :Files <Enter>
+" use h/j/k/l instead
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
 
 colorscheme molokai
-" colorscheme monokain 
