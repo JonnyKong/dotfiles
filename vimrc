@@ -29,10 +29,13 @@ set guifont=Monaco:h14
 
 " fzf
 noremap <c-p> :Files <Enter>
-" use h/j/k/l instead
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
+
+" move lines up or down
+nnoremap <A-down> :m .+1<CR>==
+nnoremap <A-up> :m .-2<CR>==
+inoremap <A-down> <Esc>:m .+1<CR>==gi
+inoremap <A-up> <Esc>:m .-2<CR>==gi
+vnoremap <A-down> :m '>+1<CR>gv=gv
+vnoremap <A-up> :m '<-2<CR>gv=gv
 
 colorscheme molokai
