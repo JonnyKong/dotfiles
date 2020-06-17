@@ -26,6 +26,7 @@ set tabstop=4
 set nu
 set backspace=2
 set guifont=Monaco:h14
+set ignorecase
 
 " fzf
 noremap <c-p> :Files <Enter>
