@@ -6,27 +6,22 @@ Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree'
 Plug 'flazz/vim-colorschemes'
 Plug 'junegunn/fzf'
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-let g:deoplete#enable_at_startup = 1
+Plug 'Valloric/YouCompleteMe'
+Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
-set nocompatible
-set laststatus=2
+" disable YCM error checking
+let g:ycm_show_diagnostics_ui = 0
 
-set expandtab
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
-set nu
 set backspace=2
-set guifont=Monaco:h14
-set ignorecase
+set expandtab tabstop=4 softtabstop=4
+set laststatus=2
+set nocompatible
+set noerrorbells
+set nu
+set shiftwidth=4    " for :retab
+set ignorecase smartcase
+set colorcolumn=100
 
 " fzf
 noremap <c-p> :Files <Enter>
