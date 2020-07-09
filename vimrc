@@ -17,13 +17,14 @@ set backspace=2
 set expandtab tabstop=4 softtabstop=4
 set laststatus=2
 set nocompatible
-set noerrorbells
-set nu
-set shiftwidth=4    " for :retab
+set noerrorbells            " disable YCM errors
+set nu                      " enable line numbers
+set shiftwidth=4            " for :retab
 set ignorecase smartcase
-set colorcolumn=100
+set colorcolumn=100         " highlight column 100
+set nofixendofline          " no newline at end of file, conform with vscode 
 
-" fzf
+" open fzf
 noremap <c-p> :Files <Enter>
 
 " move lines up or down
