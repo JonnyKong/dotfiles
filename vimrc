@@ -12,6 +12,7 @@ call plug#end()
 
 " disable YCM error checking
 let g:ycm_show_diagnostics_ui = 0
+let g:ycm_autoclose_preview_window_after_insertion = 1
 
 set backspace=2
 set expandtab tabstop=4 softtabstop=4
