@@ -23,7 +23,8 @@ set nu                      " enable line numbers
 set shiftwidth=4            " for :retab
 set ignorecase smartcase
 set colorcolumn=100         " highlight column 100
-set nofixendofline          " no newline at end of file, conform with vscode 
+set nofixendofline          " no newline at end of file, conform with vscode
+set splitright              " open new file on right side
 
 " open fzf
 noremap <c-p> :Files <Enter>
