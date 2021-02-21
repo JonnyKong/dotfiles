@@ -8,6 +8,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'junegunn/fzf'
 Plug 'Valloric/YouCompleteMe'
 Plug 'jiangmiao/auto-pairs'
+Plug 'yggdroot/indentline'
 call plug#end()
 
 " disable YCM error checking
