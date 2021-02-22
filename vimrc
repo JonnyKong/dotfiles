@@ -4,11 +4,12 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree'
-Plug 'flazz/vim-colorschemes'
 Plug 'junegunn/fzf'
 Plug 'Valloric/YouCompleteMe'
 Plug 'jiangmiao/auto-pairs'
 Plug 'yggdroot/indentline'
+Plug 'airblade/vim-gitgutter'
+Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 call plug#end()
 
 " disable YCM error checking
@@ -26,6 +27,9 @@ set ignorecase smartcase
 set colorcolumn=100         " highlight column 100
 set nofixendofline          " no newline at end of file, conform with vscode
 set splitright              " open new file on right side
+set signcolumn=yes          " always show sign column for gitgutter
+let g:gitgutter_highlight_linenrs = 1   " turn on vim-gitgutter line number highlighting by default
+set updatetime=100          " vim-gitgutter refresh time
 
 " open fzf
 noremap <c-p> :Files <Enter>
@@ -38,4 +42,10 @@ inoremap <A-up> <Esc>:m .-2<CR>==gi
 vnoremap <A-down> :m '>+1<CR>gv=gv
 vnoremap <A-up> :m '<-2<CR>gv=gv
 
-colorscheme molokai
+" colorschemes
+if (has('termguicolors'))
+  set termguicolors
+endif
+let g:material_theme_style = 'default'
+let g:airline_theme = 'material'
+colorscheme material
