@@ -34,6 +34,11 @@ set updatetime=100          " vim-gitgutter refresh time
 " open fzf
 noremap <c-p> :Files <Enter>
 
+" Exit Vim if NERDTree is the only window left.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+            \ quit | endif
+nnoremap <C-t> :NERDTreeToggle<CR>
+
 " move lines up or down
 nnoremap <A-down> :m .+1<CR>==
 nnoremap <A-up> :m .-2<CR>==
