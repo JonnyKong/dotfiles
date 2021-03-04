@@ -28,7 +28,6 @@ set colorcolumn=100         " highlight column 100
 set nofixendofline          " no newline at end of file, conform with vscode
 set splitright              " open new file on right side
 set signcolumn=yes          " always show sign column for gitgutter
-let g:gitgutter_highlight_linenrs = 1   " turn on vim-gitgutter line number highlighting by default
 set updatetime=100          " vim-gitgutter refresh time
 
 " open fzf
