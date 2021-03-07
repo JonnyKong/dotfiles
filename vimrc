@@ -29,6 +29,7 @@ set nofixendofline          " no newline at end of file, conform with vscode
 set splitright              " open new file on right side
 set signcolumn=yes          " always show sign column for gitgutter
 set updatetime=100          " vim-gitgutter refresh time
+set mouse=a
 
 " open fzf
 noremap <c-p> :Files <Enter>
