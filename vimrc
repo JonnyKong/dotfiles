@@ -30,6 +30,7 @@ set splitright              " open new file on right side
 set signcolumn=yes          " always show sign column for gitgutter
 set updatetime=100          " vim-gitgutter refresh time
 set mouse=a
+let g:indentLine_setConceal = 0     " prevent hiding symbols in markdown
 
 " open fzf
 noremap <c-p> :Files <Enter>
