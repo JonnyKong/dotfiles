@@ -10,6 +10,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'yggdroot/indentline'
 Plug 'airblade/vim-gitgutter'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+Plug 'psliwka/vim-smoothie'
 call plug#end()
 
 " disable YCM error checking
