@@ -13,9 +13,6 @@ Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'psliwka/vim-smoothie'
 call plug#end()
 
-" disable YCM error checking
-let g:ycm_show_diagnostics_ui = 0
-let g:ycm_autoclose_preview_window_after_insertion = 1
 
 set backspace=2
 set expandtab tabstop=4 softtabstop=4
@@ -31,8 +28,10 @@ set splitright              " open new file on right side
 set signcolumn=yes          " always show sign column for gitgutter
 set updatetime=100          " vim-gitgutter refresh time
 set mouse=a
-let g:indentLine_setConceal = 0     " prevent hiding symbols in markdown
+let g:indentLine_setConceal = 1     " prevent hiding symbols in markdown
 let g:ycm_confirm_extra_conf = 0    " do not prompt user to load YCM configs
+let g:ycm_show_diagnostics_ui = 0   " disable YCM error checking
+let g:ycm_autoclose_preview_window_after_insertion = 1
 
 " open fzf
 noremap <c-p> :Files <Enter>
