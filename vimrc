@@ -32,6 +32,7 @@ let g:indentLine_setConceal = 1     " prevent hiding symbols in markdown
 let g:ycm_confirm_extra_conf = 0    " do not prompt user to load YCM configs
 let g:ycm_show_diagnostics_ui = 0   " disable YCM error checking
 let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:tex_conceal = ""
 
 " open fzf
 noremap <c-p> :Files <Enter>
