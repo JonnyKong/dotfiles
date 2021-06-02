@@ -11,6 +11,8 @@ Plug 'yggdroot/indentline'
 Plug 'airblade/vim-gitgutter'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'psliwka/vim-smoothie'
+Plug 'scrooloose/syntastic'
+Plug 'editorconfig/editorconfig-vim'
 call plug#end()
 
 
@@ -30,8 +32,16 @@ set updatetime=100          " vim-gitgutter refresh time
 set mouse=a
 let g:indentLine_setConceal = 1     " prevent hiding symbols in markdown
 let g:ycm_confirm_extra_conf = 0    " do not prompt user to load YCM configs
-let g:ycm_show_diagnostics_ui = 0   " disable YCM error checking
+let g:ycm_show_diagnostics_ui = 0   " disable YCM error checking to reduce conflict with syntastic
 let g:ycm_autoclose_preview_window_after_insertion = 1
+
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " open fzf
 noremap <c-p> :Files <Enter>
