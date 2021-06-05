@@ -11,7 +11,7 @@ Plug 'yggdroot/indentline'
 Plug 'airblade/vim-gitgutter'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'psliwka/vim-smoothie'
-Plug 'scrooloose/syntastic'
+Plug 'dense-analysis/ale'
 Plug 'editorconfig/editorconfig-vim'
 call plug#end()
 
@@ -36,13 +36,9 @@ let g:ycm_show_diagnostics_ui = 0   " disable YCM error checking to reduce confl
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:tex_conceal = ""
 
-" syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" ale
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
 
 " open fzf
 noremap <c-p> :Files <Enter>
