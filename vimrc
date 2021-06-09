@@ -39,6 +39,7 @@ let g:tex_conceal = ""
 " ale
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
+let b:ale_linters = ['pylint']
 
 " open fzf
 noremap <c-p> :Files <Enter>
@@ -60,6 +61,7 @@ vnoremap <A-up> :m '<-2<CR>gv=gv
 if (has('termguicolors'))
   set termguicolors
 endif
-let g:material_theme_style = 'default'
+let g:material_theme_style = 'darker'
 let g:airline_theme = 'material'
+let g:material_terminal_italics = 1
 colorscheme material
