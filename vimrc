@@ -70,7 +70,7 @@ noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
 
-noremap gt :YcmC GoToDefinition<cr>
+noremap gd :YcmC GoToDefinition<cr>
 
 " colorschemes
 if (has('termguicolors'))
