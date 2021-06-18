@@ -39,7 +39,7 @@ let g:tex_conceal = ""
 " ale
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
-let b:ale_linters = ['pylint']
+let b:ale_linters = ['pylint', 'clangd']
 
 " open fzf
 noremap <c-p> :Files <Enter>
@@ -49,9 +49,6 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
             \ quit | endif
 nnoremap <C-b> :NERDTreeToggle<CR>
 
-" Remember cursor position from previous session
-autocmd BufReadPost * if @% !~# '\.git[\/\\]COMMIT_EDITMSG$' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-
 " move lines up or down
 nnoremap <A-down> :m .+1<CR>==
 nnoremap <A-up> :m .-2<CR>==
@@ -59,6 +56,19 @@ inoremap <A-down> <Esc>:m .+1<CR>==gi
 inoremap <A-up> <Esc>:m .-2<CR>==gi
 vnoremap <A-down> :m '>+1<CR>gv=gv
 vnoremap <A-up> :m '<-2<CR>gv=gv
+
+" Go to tab by number
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+noremap <leader>0 :tablast<cr>
+let mapleader = " "
 
 " colorschemes
 if (has('termguicolors'))
