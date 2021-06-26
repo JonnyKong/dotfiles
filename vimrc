@@ -39,7 +39,11 @@ let g:tex_conceal = ""
 " ale
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
-let b:ale_linters = ['pylint', 'clangd']
+let g:ale_linters = {
+\   'python': [],
+\   'c': ['clangd'],
+\   'cpp': ['clangd'],
+\}
 
 " open fzf
 noremap <c-p> :Files <Enter>
