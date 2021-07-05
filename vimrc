@@ -35,6 +35,7 @@ let g:ycm_confirm_extra_conf = 0    " do not prompt user to load YCM configs
 let g:ycm_show_diagnostics_ui = 0   " disable YCM error checking to reduce conflict with syntastic
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:tex_conceal = ""
+let g:smoothie_enabled = 1
 
 " ale
 let g:ale_set_loclist = 0
