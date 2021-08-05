@@ -13,6 +13,7 @@ Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'psliwka/vim-smoothie'
 Plug 'dense-analysis/ale'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'machakann/vim-highlightedyank'
 call plug#end()
 
 
@@ -36,6 +37,7 @@ let g:ycm_show_diagnostics_ui = 0   " disable YCM error checking to reduce confl
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:tex_conceal = ""
 let g:smoothie_enabled = 1
+let g:highlightedyank_highlight_duration = 150
 
 " ale
 let g:ale_set_loclist = 0
