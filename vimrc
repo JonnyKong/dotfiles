@@ -14,6 +14,7 @@ Plug 'psliwka/vim-smoothie'
 Plug 'dense-analysis/ale'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'machakann/vim-highlightedyank'
+Plug 'dominikduda/vim_current_word'
 call plug#end()
 
 
