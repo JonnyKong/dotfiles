@@ -39,6 +39,7 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:tex_conceal = ""
 let g:smoothie_enabled = 1
 let g:highlightedyank_highlight_duration = 150
+let g:vim_current_word#highlight_current_word = 0
 
 " ale
 let g:ale_set_loclist = 0
