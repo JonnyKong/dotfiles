@@ -31,6 +31,7 @@ set ignorecase smartcase
 set colorcolumn=100         " highlight column 100
 set nofixendofline          " no newline at end of file, conform with vscode
 set splitright              " open new file on right side
+set signcolumn=yes
 set mouse=a
 let g:indentLine_setConceal = 1     " prevent hiding symbols in markdown
 let g:ycm_confirm_extra_conf = 0    " do not prompt user to load YCM configs
