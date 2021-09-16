@@ -8,13 +8,15 @@ Plug 'junegunn/fzf'
 Plug 'Valloric/YouCompleteMe'
 Plug 'jiangmiao/auto-pairs'
 Plug 'yggdroot/indentline'
-Plug 'airblade/vim-gitgutter'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'psliwka/vim-smoothie'
 Plug 'dense-analysis/ale'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'dominikduda/vim_current_word'
+Plug 'projekt0n/github-nvim-theme'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'lewis6991/gitsigns.nvim'
 call plug#end()
 
 
@@ -29,8 +31,6 @@ set ignorecase smartcase
 set colorcolumn=100         " highlight column 100
 set nofixendofline          " no newline at end of file, conform with vscode
 set splitright              " open new file on right side
-set signcolumn=yes          " always show sign column for gitgutter
-set updatetime=100          " vim-gitgutter refresh time
 set mouse=a
 let g:indentLine_setConceal = 1     " prevent hiding symbols in markdown
 let g:ycm_confirm_extra_conf = 0    " do not prompt user to load YCM configs
@@ -84,8 +84,10 @@ noremap <leader>7 7gt
 noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
-
 noremap gd :YcmC GoToDefinition<cr>
+lua << EOF
+  require('gitsigns').setup()
+EOF
 
 " colorschemes
 if (has('termguicolors'))
@@ -94,4 +96,5 @@ endif
 let g:material_theme_style = 'darker'
 let g:airline_theme = 'material'
 let g:material_terminal_italics = 1
-colorscheme material
+" colorscheme material
+colorscheme github_dark
