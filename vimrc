@@ -46,7 +46,7 @@ let g:vim_current_word#highlight_current_word = 0
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 let g:ale_linters = {
-\   'python': [],
+\   'python': ['flake8', 'pylint'],
 \   'c': ['clangd'],
 \   'cpp': ['clangd'],
 \}
