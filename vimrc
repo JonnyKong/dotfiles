@@ -50,6 +50,9 @@ let g:ale_linters = {
 \   'c': ['clangd'],
 \   'cpp': ['clangd'],
 \}
+let g:ale_fixers = {
+\   'python': ['autopep8', 'yapf', 'reorder-python-imports'],
+\}
 
 " open fzf
 noremap <c-p> :Files <Enter>
