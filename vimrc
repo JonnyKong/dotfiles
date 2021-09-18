@@ -51,7 +51,8 @@ let g:ale_linters = {
 \   'cpp': ['clangd'],
 \}
 let g:ale_fixers = {
-\   'python': ['autopep8', 'yapf', 'reorder-python-imports'],
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'python': ['autopep8', 'reorder-python-imports', 'autoimport'],
 \}
 
 " open fzf
