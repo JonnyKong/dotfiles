@@ -52,7 +52,7 @@ let g:ale_linters = {
 \}
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'python': ['autopep8', 'reorder-python-imports', 'autoimport'],
+\   'python': ['autopep8', 'reorder-python-imports'],
 \}
 
 " open fzf
