@@ -17,6 +17,7 @@ Plug 'dominikduda/vim_current_word'
 Plug 'projekt0n/github-nvim-theme'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'lewis6991/gitsigns.nvim'
+Plug 'NLKNguyen/papercolor-theme'
 call plug#end()
 
 
@@ -102,4 +103,5 @@ let g:material_theme_style = 'darker'
 let g:airline_theme = 'material'
 let g:material_terminal_italics = 1
 " colorscheme material
-colorscheme github_dark
+" colorscheme github_dark
+colorscheme PaperColor
