@@ -5,7 +5,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf'
-Plug 'Valloric/YouCompleteMe'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jiangmiao/auto-pairs'
 Plug 'yggdroot/indentline'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
@@ -25,7 +25,6 @@ set backspace=2
 set expandtab tabstop=4 softtabstop=4
 set laststatus=2
 set nocompatible
-set noerrorbells            " disable YCM errors
 set nu                      " enable line numbers
 set shiftwidth=4            " for :retab
 set ignorecase smartcase
@@ -35,9 +34,6 @@ set splitright              " open new file on right side
 set signcolumn=yes
 set mouse=a
 let g:indentLine_setConceal = 1     " prevent hiding symbols in markdown
-let g:ycm_confirm_extra_conf = 0    " do not prompt user to load YCM configs
-let g:ycm_show_diagnostics_ui = 0   " disable YCM error checking to reduce conflict with syntastic
-let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:tex_conceal = ""
 let g:smoothie_enabled = 1
 let g:highlightedyank_highlight_duration = 150
@@ -90,10 +86,31 @@ noremap <leader>7 7gt
 noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
-noremap gd :YcmC GoToDefinition<cr>
 lua << EOF
   require('gitsigns').setup()
 EOF
+
+" Start of Coc configurations
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=50
+let g:coc_global_extensions = ['coc-pyright', 'coc-json']
+" End of Coc configurations
 
 " colorschemes
 if (has('termguicolors'))
