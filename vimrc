@@ -51,6 +51,7 @@ let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'python': ['autopep8', 'reorder-python-imports', 'remove_trailing_lines', 'trim_whitespace'],
 \}
+let g:ale_python_flake8_options = '--max-line-length=100'
 
 " open fzf
 noremap <c-p> :Files <Enter>
@@ -99,6 +100,10 @@ inoremap <silent><expr> <TAB>
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
