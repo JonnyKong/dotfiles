@@ -6,5 +6,6 @@
       "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"]
     }
   },
-  "coc.preferences.extensionUpdateCheck": "weekly"
+  "coc.preferences.extensionUpdateCheck": "weekly",
+  "diagnostic.displayByAle": true
 }
