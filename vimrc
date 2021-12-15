@@ -18,6 +18,7 @@ Plug 'projekt0n/github-nvim-theme'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 
@@ -88,6 +89,7 @@ noremap <leader>7 7gt
 noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
+noremap <leader>d :Gvdiffsplit<cr>
 lua << EOF
   require('gitsigns').setup()
 EOF
