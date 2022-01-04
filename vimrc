@@ -9,7 +9,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jiangmiao/auto-pairs'
 Plug 'yggdroot/indentline'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
-Plug 'psliwka/vim-smoothie'
+Plug 'tpope/vim-commentary'
 Plug 'dense-analysis/ale'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'machakann/vim-highlightedyank'
@@ -34,6 +34,7 @@ set nofixendofline          " no newline at end of file, conform with vscode
 set splitright              " open new file on right side
 set signcolumn=yes
 set mouse=a
+set ttimeoutlen=0           " set key code delays
 let g:indentLine_setConceal = 1     " prevent hiding symbols in markdown
 let g:tex_conceal = ""
 let g:smoothie_enabled = 1
