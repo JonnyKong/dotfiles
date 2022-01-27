@@ -48,6 +48,7 @@ let g:ale_linters = {
 \   'python': ['flake8', 'pylint'],
 \   'c': ['clangd'],
 \   'cpp': ['clangd'],
+\   'sh': ['shellcheck'],
 \}
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
@@ -141,5 +142,5 @@ let g:material_theme_style = 'darker'
 let g:airline_theme = 'material'
 let g:material_terminal_italics = 1
 " colorscheme material
-" colorscheme github_dark
+" colorscheme github_dark_colorblind
 colorscheme PaperColor
