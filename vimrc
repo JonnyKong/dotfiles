@@ -138,9 +138,9 @@ endfunction
 if (has('termguicolors'))
   set termguicolors
 endif
-let g:material_theme_style = 'darker'
+let g:material_theme_style = 'default'
 let g:airline_theme = 'material'
 let g:material_terminal_italics = 1
-" colorscheme material
+colorscheme material
 " colorscheme github_dark_colorblind
-colorscheme PaperColor
+" colorscheme PaperColor
