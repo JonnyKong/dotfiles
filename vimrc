@@ -20,6 +20,7 @@ Plug 'lewis6991/gitsigns.nvim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'tpope/vim-fugitive'
 Plug 'liuchengxu/vista.vim'
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 
@@ -135,9 +136,17 @@ function! s:show_documentation()
 endfunction
 " End of Coc configurations
 
+# The following requires https://github.com/ryanoasis/nerd-fonts
 let g:vista_default_executive = 'coc'
 let g:vista#renderer#enable_icon = 0
 let g:vista_sidebar_position = 'vertical topleft'
+let g:vista#renderer#enable_icon = 1
+let g:vista#renderer#icons = {
+\   "function": "\uf794",
+\   "variable": "\uf71b",
+\  }
+let g:webdevicons_enable = 1
+let g:webdevicons_enable_nerdtree = 1
 
 " colorschemes
 if (has('termguicolors'))
