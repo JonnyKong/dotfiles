@@ -19,6 +19,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'tpope/vim-fugitive'
+Plug 'liuchengxu/vista.vim'
 call plug#end()
 
 
@@ -133,6 +134,10 @@ function! s:show_documentation()
   endif
 endfunction
 " End of Coc configurations
+
+let g:vista_default_executive = 'coc'
+let g:vista#renderer#enable_icon = 0
+let g:vista_sidebar_position = 'vertical topleft'
 
 " colorschemes
 if (has('termguicolors'))
