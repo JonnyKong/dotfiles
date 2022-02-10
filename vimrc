@@ -136,7 +136,7 @@ function! s:show_documentation()
 endfunction
 " End of Coc configurations
 
-# The following requires https://github.com/ryanoasis/nerd-fonts
+" The following requires https://github.com/ryanoasis/nerd-fonts
 let g:vista_default_executive = 'coc'
 let g:vista#renderer#enable_icon = 0
 let g:vista_sidebar_position = 'vertical topleft'
