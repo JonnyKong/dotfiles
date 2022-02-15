@@ -55,6 +55,8 @@ let g:ale_linters = {
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'python': ['autopep8', 'reorder-python-imports'],
+\   'c': ['clang-format'],
+\   'cpp': ['clang-format'],
 \}
 let g:ale_python_flake8_options = '--max-line-length=100'
 let g:ale_python_autopep8_options = '--max-line-length 100'
