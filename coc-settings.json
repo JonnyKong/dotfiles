@@ -1,11 +1,5 @@
 {
-  "languageserver": {
-    "clangd": {
-      "command": "clangd",
-      "rootPatterns": ["compile_flags.txt", "compile_commands.json"],
-      "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"]
-    }
-  },
   "coc.preferences.extensionUpdateCheck": "weekly",
-  "diagnostic.displayByAle": true
+  "diagnostic.displayByAle": true,
+  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/13.0.0/clangd_13.0.0/bin/clangd"
 }
