@@ -1,10 +1,9 @@
 call plug#begin()
 Plug 'itchyny/lightline.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree'
-Plug 'junegunn/fzf'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jiangmiao/auto-pairs'
 Plug 'yggdroot/indentline'
@@ -21,6 +20,7 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'tpope/vim-fugitive'
 Plug 'liuchengxu/vista.vim'
 Plug 'ryanoasis/vim-devicons'
+Plug 'lervag/vimtex'
 call plug#end()
 
 
@@ -148,6 +148,10 @@ let g:vista#renderer#icons = {
 \  }
 let g:webdevicons_enable = 1
 let g:webdevicons_enable_nerdtree = 1
+
+" Latex
+syntax enable
+let g:vimtex_syntax_conceal_disable = 1
 
 " colorschemes
 if (has('termguicolors'))
