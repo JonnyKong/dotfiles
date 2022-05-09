@@ -169,7 +169,7 @@ colorscheme material
 lua << EOF
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
-  ensure_installed = { "c", "java", "python" },
+  ensure_installed = { "c", "cpp", "java", "python" },
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
   highlight = {
