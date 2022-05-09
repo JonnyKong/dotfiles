@@ -21,6 +21,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'liuchengxu/vista.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'lervag/vimtex'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
 
@@ -163,3 +164,16 @@ let g:material_terminal_italics = 1
 colorscheme material
 " colorscheme github_dark_colorblind
 " colorscheme PaperColor
+
+" Treesitter
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  -- A list of parser names, or "all"
+  ensure_installed = { "c", "java", "python" },
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+  highlight = {
+    enable = true,    
+  }
+}
+EOF
