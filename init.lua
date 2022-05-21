@@ -1,4 +1,3 @@
-vim.opt.termguicolors = true
 require('plugins')
 require('syntax')
 require('semantics')
