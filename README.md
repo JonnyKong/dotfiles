@@ -1,2 +1,13 @@
 # Dot Files
-Note: If using [nvim](https://github.com/neovim/neovim), you have to move `.vimrc` to `$HOME/.config/nvim/init.vim`.
+
+### Setup
+
+Install [packer.nvim](https://github.com/wbthomason/packer.nvim)
+
+```
+ln -s <this_repo>/.config/nvim/init.lua init.lua
+ln -s <this_repo>/.config/nvim/lua lua
+
+:PackerInstall
+:PackerUpdate
+```
