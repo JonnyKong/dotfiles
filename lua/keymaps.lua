@@ -1,7 +1,19 @@
 vim.g.mapleader = " "
 
--- open fzf
+-- telescope
 vim.api.nvim_set_keymap("n", "<c-p>", "<cmd>Telescope find_files<CR>", {})
+vim.api.nvim_set_keymap("n", "<c-s-p>", "<cmd>Telescope live_grep<CR>", {})
+-- make telescope close with single esc in insert mode
+local actions = require("telescope.actions")
+require("telescope").setup({
+    defaults = {
+        mappings = {
+            i = {
+                ["<esc>"] = actions.close,
+            },
+        },
+    },
+})
 
 -- nerdtree
 vim.api.nvim_set_keymap("n", "<c-b>", ":NERDTreeToggle<CR>", {})
