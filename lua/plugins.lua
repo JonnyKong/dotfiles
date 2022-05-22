@@ -15,6 +15,7 @@ return require('packer').startup(function()
             {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'}
         }
     }
+    use 'tpope/vim-surround'
     use 'scrooloose/nerdtree'
     use {'neoclide/coc.nvim', branch = 'release'}
     use 'jiangmiao/auto-pairs'
