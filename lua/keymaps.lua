@@ -2,7 +2,7 @@ vim.g.mapleader = " "
 
 -- telescope
 vim.api.nvim_set_keymap("n", "<c-p>", "<cmd>Telescope find_files<CR>", {})
-vim.api.nvim_set_keymap("n", "<c-P>", "<cmd>Telescope live_grep<CR>", {})
+vim.api.nvim_set_keymap("n", "<s-f>", "<cmd>Telescope live_grep<CR>", {})
 -- make telescope close with single esc in insert mode
 local actions = require("telescope.actions")
 require("telescope").setup({
