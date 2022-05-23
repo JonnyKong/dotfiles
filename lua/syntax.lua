@@ -6,6 +6,7 @@ vim.opt.laststatus = 2
 vim.opt.compatible = false
 vim.opt.nu = true                	    -- enable line numbers
 vim.opt.shiftwidth = 4              	-- for :retab
+vim.opt.ignorecase = true
 vim.opt.smartcase = true 	            -- ignore case for search
 vim.opt.colorcolumn = '100'          	-- highlight column 100
 vim.opt.fixendofline = false            -- no newline at end of file, conform with vscode
