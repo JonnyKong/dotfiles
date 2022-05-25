@@ -40,5 +40,16 @@ nmap <silent> gr <Plug>(coc-references)
 " delays and poor user experience.
 set updatetime=50
 let g:coc_global_extensions = ['coc-pyright', 'coc-json', 'coc-sh', 'coc-java', 'coc-clangd']
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
 ]])
 -- End of Coc configurations
