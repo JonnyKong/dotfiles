@@ -5,9 +5,9 @@ if fn.empty(fn.glob(install_path)) > 0 then
   packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
-return require('packer').startup(function()
+require('packer').startup(function()
     use 'wbthomason/packer.nvim'
-    use 'itchyny/lightline.vim'
+    use { 'feline-nvim/feline.nvim', branch = '0.5-compat' }
     use {
         'nvim-telescope/telescope.nvim',
         requires = {
@@ -31,7 +31,24 @@ return require('packer').startup(function()
     use 'NLKNguyen/papercolor-theme'
     use 'tpope/vim-fugitive'
     use 'liuchengxu/vista.vim'
-    use 'ryanoasis/vim-devicons'
+    use 'kyazdani42/nvim-web-devicons'
     use 'lervag/vimtex'
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 end)
+
+local cmd = vim.cmd
+cmd "au TextYankPost * silent! lua vim.highlight.on_yank({timeout = 300})"
+vim.g.tex_conceal = ""
+vim.g["vim_current_word#highlight_current_word"] = 0
+
+require'nvim-treesitter.configs'.setup {
+    -- A list of parser names, or "all"
+  ensure_installed = { "c", "cpp", "java", "python", "bash" },
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+  highlight = {
+    enable = true,    
+  }
+}
+
+require('feline').setup()

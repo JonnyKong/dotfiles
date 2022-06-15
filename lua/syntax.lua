@@ -14,18 +14,4 @@ vim.opt.splitright = true               -- open new file on right side
 vim.opt.signcolumn='yes'
 vim.opt.mouse='a'
 vim.opt.ttimeoutlen=0                   -- set key code delays
-
-local cmd = vim.cmd
-cmd "au TextYankPost * silent! lua vim.highlight.on_yank({timeout = 300})"
-vim.g.tex_conceal = ""
-vim.g["vim_current_word#highlight_current_word"] = 0
-
-require'nvim-treesitter.configs'.setup {
-    -- A list of parser names, or "all"
-  ensure_installed = { "c", "cpp", "java", "python", "bash" },
-  -- Install parsers synchronously (only applied to `ensure_installed`)
-  sync_install = false,
-  highlight = {
-    enable = true,    
-  }
-}
+vim.opt.termguicolors = true
