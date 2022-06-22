@@ -16,8 +16,8 @@ require("telescope").setup({
 })
 
 -- nerdtree
-vim.api.nvim_set_keymap("n", "<c-b>", ":NERDTreeToggle<CR>", {})
-vim.api.nvim_set_keymap("n", "<c-f>", ":NERDTreeFind<CR>", {})
+vim.api.nvim_set_keymap("n", "<c-b>", ":NvimTreeToggle<CR>", {})
+vim.api.nvim_set_keymap("n", "<c-f>", ":NvimTreeFindFile<CR>", {})
 -- exit Vim if NERDTree is the only window left
 vim.api.nvim_command([[
   autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif

@@ -16,7 +16,6 @@ require('packer').startup(function()
         }
     }
     use 'tpope/vim-surround'
-    use 'scrooloose/nerdtree'
     use {'neoclide/coc.nvim', branch = 'release'}
     use 'jiangmiao/auto-pairs'
     use 'yggdroot/indentline'
@@ -34,6 +33,7 @@ require('packer').startup(function()
     use 'kyazdani42/nvim-web-devicons'
     use 'lervag/vimtex'
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+    use 'kyazdani42/nvim-tree.lua'
 end)
 
 local cmd = vim.cmd
@@ -52,3 +52,4 @@ require'nvim-treesitter.configs'.setup {
 }
 
 require('feline').setup()
+require("nvim-tree").setup()

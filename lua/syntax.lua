@@ -15,3 +15,4 @@ vim.opt.signcolumn='yes'
 vim.opt.mouse='a'
 vim.opt.ttimeoutlen=0                   -- set key code delays
 vim.opt.termguicolors = true
+vim.g.indentLine_setConceal = false
