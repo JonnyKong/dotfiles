@@ -9,7 +9,8 @@ vim.g.ale_linters = {
 vim.g.ale_fixers = {
     python = {'autopep8', 'reorder-python-imports'},
     c = {'clang-format'},
-    cpp = {'clang-format'}
+    cpp = {'clang-format'},
+    sh = {'shfmt'}
 }
 vim.g.ale_fixers["*"] = {'remove_trailing_lines', 'trim_whitespace'}
 vim.g.ale_python_flake8_options = '--max-line-length=100'
