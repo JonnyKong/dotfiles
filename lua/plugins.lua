@@ -18,7 +18,7 @@ require('packer').startup(function()
     use 'tpope/vim-surround'
     use {'neoclide/coc.nvim', branch = 'release'}
     use 'jiangmiao/auto-pairs'
-    use 'yggdroot/indentline'
+    use "lukas-reineke/indent-blankline.nvim"
     use {'kaicataldo/material.vim', branch = 'main'}
     use 'tpope/vim-commentary'
     use 'dense-analysis/ale'
