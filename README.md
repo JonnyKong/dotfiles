@@ -9,7 +9,6 @@ ln -s <this_repo>/.config/nvim/init.lua init.lua
 ln -s <this_repo>/.config/nvim/lua lua
 ln -s <this_repo>/.config/nvim/coc-settings.json coc-settings.json
 
-:PackerInstall
-:PackerUpdate
+:PackerSync
 :CocCommand clangd.install
 ```
