@@ -34,6 +34,7 @@ require('packer').startup(function()
     use 'lervag/vimtex'
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use 'kyazdani42/nvim-tree.lua'
+    use "EdenEast/nightfox.nvim"
 end)
 
 local cmd = vim.cmd
