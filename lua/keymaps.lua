@@ -28,6 +28,10 @@ vim.api.nvim_command([[
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 ]])
 
+-- Copilot
+vim.api.nvim_set_keymap("i", "<c-[>", "<Plug>(copilot-previous)", {})
+vim.api.nvim_set_keymap("i", "<c-]>", "<Plug>(copilot-next)", {})
+
 vim.api.nvim_set_keymap("n", "<leader>1", "1gt", {})
 vim.api.nvim_set_keymap("n", "<leader>2", "2gt", {})
 vim.api.nvim_set_keymap("n", "<leader>3", "3gt", {})

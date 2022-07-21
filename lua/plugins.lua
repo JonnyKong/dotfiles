@@ -55,3 +55,5 @@ require'nvim-treesitter.configs'.setup {
 
 require('feline').setup()
 require("nvim-tree").setup()
+
+vim.g.AutoPairsMoveCharacter = "" -- disable auto-pairs move character
