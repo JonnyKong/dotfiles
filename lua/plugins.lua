@@ -35,6 +35,7 @@ require('packer').startup(function()
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use 'kyazdani42/nvim-tree.lua'
     use "EdenEast/nightfox.nvim"
+    use 'github/copilot.vim'
 end)
 
 local cmd = vim.cmd
