@@ -56,3 +56,5 @@ require'nvim-treesitter.configs'.setup {
 require("nvim-tree").setup()
 
 vim.g.AutoPairsMoveCharacter = "" -- disable auto-pairs move character
+
+vim.g.lightline = {colorscheme = 'solarized'}
