@@ -7,7 +7,7 @@ end
 
 require('packer').startup(function()
     use 'wbthomason/packer.nvim'
-    use { 'feline-nvim/feline.nvim', branch = '0.5-compat' }
+    use 'itchyny/lightline.vim'
     use {
         'nvim-telescope/telescope.nvim',
         requires = {
@@ -53,7 +53,6 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 
-require('feline').setup()
 require("nvim-tree").setup()
 
 vim.g.AutoPairsMoveCharacter = "" -- disable auto-pairs move character
