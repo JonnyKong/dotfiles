@@ -31,6 +31,9 @@ vim.api.nvim_command([[
 -- Copilot
 vim.api.nvim_set_keymap("i", "<c-[>", "<Plug>(copilot-previous)", {})
 vim.api.nvim_set_keymap("i", "<c-]>", "<Plug>(copilot-next)", {})
+-- Use C-J to accept, avoid collision with CoC
+vim.g.copilot_no_tab_map = true
+vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 
 vim.api.nvim_set_keymap("n", "<leader>1", "1gt", {})
 vim.api.nvim_set_keymap("n", "<leader>2", "2gt", {})
