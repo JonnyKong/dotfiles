@@ -18,7 +18,7 @@ require('packer').startup(function()
     use 'tpope/vim-surround'
     use {'neoclide/coc.nvim', branch = 'release'}
     use 'jiangmiao/auto-pairs'
-    use "lukas-reineke/indent-blankline.nvim"
+    use 'lukas-reineke/indent-blankline.nvim'
     use {'kaicataldo/material.vim', branch = 'main'}
     use 'tpope/vim-commentary'
     use 'dense-analysis/ale'
@@ -34,10 +34,10 @@ require('packer').startup(function()
     use 'lervag/vimtex'
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use 'kyazdani42/nvim-tree.lua'
-    use "EdenEast/nightfox.nvim"
-    use 'github/copilot.vim'
+    use 'EdenEast/nightfox.nvim'
+    -- use 'github/copilot.vim'
     use({
-        "iamcco/markdown-preview.nvim",
+        'iamcco/markdown-preview.nvim',
         run = "cd app && npm install",
         setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
         ft = { "markdown" },
