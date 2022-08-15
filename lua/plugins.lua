@@ -36,6 +36,12 @@ require('packer').startup(function()
     use 'kyazdani42/nvim-tree.lua'
     use "EdenEast/nightfox.nvim"
     use 'github/copilot.vim'
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = "cd app && npm install",
+        setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
+        ft = { "markdown" },
+    })
 end)
 
 local cmd = vim.cmd
