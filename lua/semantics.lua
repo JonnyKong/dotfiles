@@ -10,7 +10,8 @@ vim.g.ale_fixers = {
     python = {'autopep8', 'reorder-python-imports'},
     c = {'clang-format'},
     cpp = {'clang-format'},
-    sh = {'shfmt'}
+    sh = {'shfmt'},
+    java = {'google_java_format'},
 }
 vim.g.ale_fixers["*"] = {'remove_trailing_lines', 'trim_whitespace'}
 vim.g.ale_python_flake8_options = '--max-line-length=100'
