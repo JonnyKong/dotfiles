@@ -19,7 +19,7 @@ require('packer').startup(function()
     use {'neoclide/coc.nvim', branch = 'release'}
     use 'jiangmiao/auto-pairs'
     use 'lukas-reineke/indent-blankline.nvim'
-    use {'kaicataldo/material.vim', branch = 'main'}
+    use 'marko-cerovac/material.nvim'
     use 'tpope/vim-commentary'
     use 'dense-analysis/ale'
     use 'editorconfig/editorconfig-vim'

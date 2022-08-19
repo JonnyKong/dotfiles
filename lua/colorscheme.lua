@@ -4,8 +4,10 @@ vim.g.airline_theme = 'material'
 vim.g.material_terminal_italics = 1
 
 vim.cmd([[
-" colorscheme material
+colorscheme material
 " colorscheme github_dark_default
-colorscheme PaperColor
+" colorscheme PaperColor
 " colorscheme terafox
 ]])
+
+vim.g.material_style = "oceanic"
