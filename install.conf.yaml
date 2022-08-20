@@ -6,6 +6,7 @@
 
 - link:
     ~/.zshrc: zshrc
+    ~/.ideavimrc: ideavimrc
     ~/.config/nvim/init.lua: init.lua
     ~/.config/nvim/lua: lua
     ~/.config/nvim/coc-settings.json: coc-settings.json
