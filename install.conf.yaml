@@ -1,14 +1,14 @@
 - defaults:
     link:
-      relink: false
+      relink: true
 
 - clean: ['~']
 
 - link:
     ~/.zshrc: zshrc
     ~/.ideavimrc: ideavimrc
-    ~/.config/nvim/init.lua: init.lua
-    ~/.config/nvim/lua: lua
+    ~/.config/nvim/init.lua: neovim/init.lua
+    ~/.config/nvim/lua: neovim/lua
     ~/.config/nvim/coc-settings.json: coc-settings.json
 
 - shell:
