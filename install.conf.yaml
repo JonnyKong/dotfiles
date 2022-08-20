@@ -1,0 +1,14 @@
+- defaults:
+    link:
+      relink: false
+
+- clean: ['~']
+
+- link:
+    ~/.zshrc: zshrc
+    ~/.config/nvim/init.lua: init.lua
+    ~/.config/nvim/lua: lua
+    ~/.config/nvim/coc-settings.json: coc-settings.json
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
