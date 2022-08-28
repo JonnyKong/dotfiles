@@ -37,10 +37,8 @@ require('packer').startup(function()
     use 'EdenEast/nightfox.nvim'
     -- use 'github/copilot.vim'
     use({
-        'iamcco/markdown-preview.nvim',
-        run = "cd app && npm install",
-        setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
-        ft = { "markdown" },
+        "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end,
     })
 end)
 
@@ -59,7 +57,13 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 
-require("nvim-tree").setup()
+require("nvim-tree").setup{
+  git = {
+    enable = true,
+    ignore = false,  -- do not hide .gitignore files
+    timeout = 400,
+  },
+}
 
 vim.g.AutoPairsMoveCharacter = "" -- disable auto-pairs move character
 
