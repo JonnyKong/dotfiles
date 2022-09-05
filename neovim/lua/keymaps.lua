@@ -44,3 +44,9 @@ vim.api.nvim_set_keymap("n", "<leader>6", "6gt", {})
 vim.api.nvim_set_keymap("n", "<leader>7", "7gt", {})
 vim.api.nvim_set_keymap("n", "<leader>8", "8gt", {})
 vim.api.nvim_set_keymap("n", "<leader>9", "9gt", {})
+
+-- Search and highlight but not jump
+-- https://stackoverflow.com/a/49944815/6060420
+vim.cmd([[
+nnoremap <silent> * :let @/= '\<' . expand('<cword>') . '\>' <bar> set hls <cr>
+]])
