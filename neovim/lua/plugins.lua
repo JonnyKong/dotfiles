@@ -29,7 +29,6 @@ require('packer').startup(function()
     use {'lewis6991/gitsigns.nvim', config=function() require('gitsigns').setup() end }
     use 'NLKNguyen/papercolor-theme'
     use 'tpope/vim-fugitive'
-    use 'liuchengxu/vista.vim'
     use 'kyazdani42/nvim-web-devicons'
     use 'lervag/vimtex'
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
