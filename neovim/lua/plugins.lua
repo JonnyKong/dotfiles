@@ -40,6 +40,7 @@ require('packer').startup(function()
         "iamcco/markdown-preview.nvim",
         run = function() vim.fn["mkdp#util#install"]() end,
     })
+    use 'liuchengxu/vista.vim'
 end)
 
 local cmd = vim.cmd
