@@ -58,7 +58,7 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 
-require("nvim-tree").setup{
+require("nvim-tree").setup {
   git = {
     enable = true,
     ignore = false,  -- do not hide .gitignore files
@@ -68,4 +68,23 @@ require("nvim-tree").setup{
 
 vim.g.AutoPairsMoveCharacter = "" -- disable auto-pairs move character
 
-vim.g.lightline = {colorscheme = 'solarized'}
+-- Show the nearest method/function in the statusline
+-- https://github.com/liuchengxu/vista.vim#show-the-nearest-methodfunction-in-the-statusline
+vim.cmd([[
+function! NearestMethodOrFunction() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
+set statusline+=%{NearestMethodOrFunction()}
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'readonly', 'filename', 'modified', 'method' ] ]
+      \ },
+      \ 'component_function': {
+      \   'method': 'NearestMethodOrFunction'
+      \ },
+      \ }
+]])
