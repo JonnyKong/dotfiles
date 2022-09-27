@@ -15,7 +15,7 @@ require("telescope").setup({
     },
 })
 
--- nerdtree
+-- nvimtree
 vim.api.nvim_set_keymap("n", "<c-b>", ":NvimTreeToggle<CR>", {})
 vim.api.nvim_set_keymap("n", "<c-f>", ":NvimTreeFindFile<CR>", {})
 -- exit Vim if NERDTree is the only window left
