@@ -17,7 +17,6 @@ require('packer').startup(function()
     }
     use 'tpope/vim-surround'
     use {'neoclide/coc.nvim', branch = 'release'}
-    use 'jiangmiao/auto-pairs'
     use 'lukas-reineke/indent-blankline.nvim'
     use 'marko-cerovac/material.nvim'
     use 'tpope/vim-commentary'
@@ -75,7 +74,7 @@ set statusline+=%{NearestMethodOrFunction()}
 autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 
 let g:lightline = {
-      \ 'colorscheme': 'solarized',
+      \ 'colorscheme': 'powerline',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'readonly', 'filename', 'modified', 'method' ] ]
