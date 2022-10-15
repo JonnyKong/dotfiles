@@ -38,6 +38,7 @@ require('packer').startup(function()
         run = function() vim.fn["mkdp#util#install"]() end,
     })
     use 'liuchengxu/vista.vim'
+    use 'chrisbra/csv.vim'
 end)
 
 local cmd = vim.cmd
