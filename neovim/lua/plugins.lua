@@ -85,3 +85,5 @@ let g:lightline = {
       \ },
       \ }
 ]])
+
+vim.g.csv_delim=','
