@@ -1,7 +1,0 @@
-{
-  "coc.preferences.extensionUpdateCheck": "weekly",
-  "diagnostic.displayByAle": true,
-  "suggest.noselect": true,
-  "pyright.inlayHints.functionReturnTypes": false,
-  "pyright.inlayHints.variableTypes": false
-}
