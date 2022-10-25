@@ -49,6 +49,7 @@ require('packer').startup(function()
     use 'hrsh7th/vim-vsnip-integ'
     use 'onsails/lspkind.nvim'
     use 'nvim-lualine/lualine.nvim'
+    use 'windwp/nvim-autopairs'
 end)
 
 local cmd = vim.cmd
@@ -56,6 +57,8 @@ cmd "au TextYankPost * silent! lua vim.highlight.on_yank({timeout = 300})"
 vim.g.tex_conceal = ""
 vim.g.AutoPairsMoveCharacter = "" -- disable auto-pairs move character
 vim.g.csv_delim=','
+
+require("nvim-autopairs").setup {}
 
 require'nvim-treesitter.configs'.setup {
     -- A list of parser names, or "all"
@@ -77,7 +80,7 @@ require("nvim-tree").setup {
 
 require("mason").setup()
 require('mason-lspconfig').setup({
-    ensure_installed = { 'pyright', 'clangd', 'jdtls', 'bashls' }
+    ensure_installed = { 'pyright', 'clangd', 'jdtls', 'bashls', 'autopep8' }
 })
 
 local lspkind = require('lspkind')
