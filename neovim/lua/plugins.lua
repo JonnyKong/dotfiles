@@ -50,6 +50,7 @@ require('packer').startup(function()
     use 'onsails/lspkind.nvim'
     use 'nvim-lualine/lualine.nvim'
     use 'windwp/nvim-autopairs'
+    use 'SmiteshP/nvim-navic'
 end)
 
 local cmd = vim.cmd
@@ -156,6 +157,8 @@ cmp.setup.cmdline(':', {
   })
 })
 
+local navic = require('nvim-navic')
+
 -- Set up lspconfig.
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
@@ -179,6 +182,10 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+
+  if client.server_capabilities.documentSymbolProvider then
+        navic.attach(client, bufnr)
+    end
 end
 
 require('lspconfig')['pyright'].setup{ on_attach = on_attach }
@@ -230,8 +237,8 @@ require('lualine').setup {
   },
   sections = {
     lualine_a = {'mode'},
-    lualine_b = {'branch', 'diagnostics'},
-    lualine_c = {custom_fname},
+    lualine_b = {'branch'},
+    lualine_c = {custom_fname, { navic.get_location, cond = navic.is_available }},
     lualine_x = {'encoding', 'fileformat', 'filetype'},
     lualine_y = {'progress'},
     lualine_z = {'location'}
