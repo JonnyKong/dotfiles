@@ -55,6 +55,7 @@ end)
 
 local cmd = vim.cmd
 cmd "au TextYankPost * silent! lua vim.highlight.on_yank({timeout = 300})"
+cmd "autocmd FileType c,cpp,java setlocal commentstring=//\\ %s"
 vim.g.tex_conceal = ""
 vim.g.AutoPairsMoveCharacter = "" -- disable auto-pairs move character
 vim.g.csv_delim=','
