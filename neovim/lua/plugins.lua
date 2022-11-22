@@ -238,36 +238,22 @@ require('lualine').setup {
   },
   sections = {
     lualine_a = {'mode'},
-    lualine_b = {'branch'},
-    lualine_c = {custom_fname},
+    lualine_b = {custom_fname},
+    lualine_c = {{ navic.get_location, cond = navic.is_available }},
     lualine_x = {'encoding', 'fileformat', 'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
+    lualine_y = {'location'},
+    lualine_z = {'hostname'}
   },
   inactive_sections = {
     lualine_a = {},
     lualine_b = {},
     lualine_c = {'filename'},
-    lualine_x = {'location'},
+    lualine_x = {},
     lualine_y = {},
     lualine_z = {}
   },
   tabline = {},
-  winbar = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {},
-    lualine_x = {},
-    lualine_y = {navic.get_location},
-    lualine_z = {}
-  },
-  inactive_winbar = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {},
-    lualine_x = {},
-    lualine_y = {navic.get_location},
-    lualine_z = {}
-  },
+  winbar = {},
+  inactive_winbar = {},
   extensions = {}
 }
