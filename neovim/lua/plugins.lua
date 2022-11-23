@@ -240,9 +240,9 @@ require('lualine').setup {
     lualine_a = {'mode'},
     lualine_b = {custom_fname},
     lualine_c = {{ navic.get_location, cond = navic.is_available }},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_x = {'searchcount', 'fileformat', 'filetype'},
     lualine_y = {'location'},
-    lualine_z = {'hostname'}
+    lualine_z = {}
   },
   inactive_sections = {
     lualine_a = {},
