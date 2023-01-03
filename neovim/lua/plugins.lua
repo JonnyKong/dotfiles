@@ -82,7 +82,7 @@ require("nvim-tree").setup {
 
 require("mason").setup()
 require('mason-lspconfig').setup({
-    ensure_installed = { 'pyright', 'clangd', 'jdtls', 'bashls' }
+    ensure_installed = { 'pyright', 'clangd', 'jdtls', 'bashls', 'reorder-python-imports' }
 })
 
 local lspkind = require('lspkind')
