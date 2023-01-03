@@ -51,6 +51,7 @@ require('packer').startup(function()
     use 'nvim-lualine/lualine.nvim'
     use 'windwp/nvim-autopairs'
     use 'SmiteshP/nvim-navic'
+    use 'WhoIsSethDaniel/mason-tool-installer.nvim'
 end)
 
 local cmd = vim.cmd
@@ -82,8 +83,11 @@ require("nvim-tree").setup {
 
 require("mason").setup()
 require('mason-lspconfig').setup({
-    ensure_installed = { 'pyright', 'clangd', 'jdtls', 'bashls', 'reorder-python-imports' }
+    ensure_installed = { 'pyright', 'clangd', 'jdtls', 'bashls' }
 })
+require('mason-tool-installer').setup{
+    ensure_installed = { 'reorder-python-imports', 'shfmt' }
+}
 
 local lspkind = require('lspkind')
 local cmp = require('cmp')
