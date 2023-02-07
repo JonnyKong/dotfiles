@@ -10,7 +10,6 @@
     ~/.tmux.conf: tmux.conf
     ~/.config/nvim/init.lua: neovim/init.lua
     ~/.config/nvim/lua: neovim/lua
-    ~/.config/nvim/coc-settings.json: neovim/coc-settings.json
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
