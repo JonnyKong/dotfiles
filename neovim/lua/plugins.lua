@@ -79,6 +79,9 @@ require("nvim-tree").setup {
     ignore = false,  -- do not hide .gitignore files
     timeout = 400,
   },
+  renderer = {
+    group_empty = true,
+  },
 }
 
 require("mason").setup()
