@@ -89,7 +89,7 @@ require('mason-lspconfig').setup({
     ensure_installed = { 'pyright', 'clangd', 'jdtls', 'bashls' }
 })
 require('mason-tool-installer').setup{
-    ensure_installed = { 'reorder-python-imports', 'shfmt' }
+    ensure_installed = { 'reorder-python-imports', 'shfmt', 'google-java-format' }
 }
 
 local lspkind = require('lspkind')

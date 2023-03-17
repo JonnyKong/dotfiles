@@ -13,7 +13,7 @@ require('material').setup({
 vim.g.material_style = "oceanic"
 vim.cmd([[
 " colorscheme material
-" colorscheme github_dark_default
-colorscheme PaperColor
+colorscheme github_dark_colorblind
+" colorscheme PaperColor
 " colorscheme terafox
 ]])

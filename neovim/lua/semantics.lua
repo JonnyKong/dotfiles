@@ -15,3 +15,4 @@ vim.g.ale_fixers = {
 vim.g.ale_fixers["*"] = {'remove_trailing_lines', 'trim_whitespace'}
 vim.g.ale_python_flake8_options = '--max-line-length=100'
 vim.g.ale_python_autopep8_options = '--max-line-length 100'
+vim.g.ale_java_google_java_format_options = '--aosp'
