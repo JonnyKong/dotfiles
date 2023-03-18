@@ -84,6 +84,10 @@ require("nvim-tree").setup {
     group_empty = true,
   },
 }
+-- Override NvimTreeFindFile with fucus = true
+vim.api.nvim_create_user_command("NvimTreeFindFile", function(res)
+    require("nvim-tree.api").tree.find_file { open = true, update_root = res.bang, focus = true }
+end, { bang = true, bar = true })
 
 require("mason").setup()
 require('mason-lspconfig').setup({
