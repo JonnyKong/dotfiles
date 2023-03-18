@@ -50,3 +50,8 @@ vim.api.nvim_set_keymap("n", "<leader>9", "9gt", {})
 vim.cmd([[
 nnoremap <silent> * :let @/= '\<' . expand('<cword>') . '\>' <bar> set hls <cr>
 ]])
+
+-- trouble.nvim
+vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>",
+  {silent = true, noremap = true}
+)

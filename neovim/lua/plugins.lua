@@ -52,6 +52,7 @@ require('packer').startup(function()
     use 'windwp/nvim-autopairs'
     use 'SmiteshP/nvim-navic'
     use 'WhoIsSethDaniel/mason-tool-installer.nvim'
+    use 'folke/trouble.nvim'
 end)
 
 local cmd = vim.cmd
@@ -272,3 +273,5 @@ require("indent_blankline").setup {
     -- treesitter to calculate indentation when possible
     use_treesitter=true,
 }
+
+require("trouble").setup{}
