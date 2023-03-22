@@ -14,7 +14,6 @@ vim.opt.splitright = true               -- open new file on right side
 vim.opt.signcolumn='yes'
 vim.opt.mouse='a'
 vim.opt.ttimeoutlen=0                   -- set key code delays
-vim.opt.termguicolors = true
 vim.g.indentLine_setConceal = false
 vim.g.tex_conceal = ""
 vim.g.AutoPairsMoveCharacter = "" -- disable auto-pairs move character
