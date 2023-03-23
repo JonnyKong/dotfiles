@@ -53,6 +53,7 @@ require('packer').startup(function()
     use 'SmiteshP/nvim-navic'
     use 'WhoIsSethDaniel/mason-tool-installer.nvim'
     use 'folke/trouble.nvim'
+    use 'nanozuki/tabby.nvim'
 end)
 
 local cmd = vim.cmd
@@ -276,3 +277,18 @@ require("indent_blankline").setup {
 }
 
 require("trouble").setup{}
+
+require('tabby.tabline').use_preset('tab_only', {
+  theme = {
+    fill = 'TabLineFill', -- tabline background
+    head = 'TabLine', -- head element highlight
+    current_tab = 'TabLineSel', -- current tab label highlight
+    tab = 'TabLine', -- other tab label highlight
+    win = 'TabLine', -- window highlight
+    tail = 'TabLine', -- tail element highlight
+  },
+  nerdfont = true, -- whether use nerdfont
+  buf_name = {
+      mode = "'unique'|'relative'|'tail'|'shorten'",
+  },
+})
