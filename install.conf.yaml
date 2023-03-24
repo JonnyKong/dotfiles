@@ -10,6 +10,7 @@
     ~/.tmux.conf: tmux.conf
     ~/.config/nvim/init.lua: neovim/init.lua
     ~/.config/nvim/lua: neovim/lua
+    ~/.config/nvim/ftplugin: neovim/ftplugin
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
