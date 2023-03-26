@@ -82,6 +82,11 @@ require("nvim-tree").setup {
   renderer = {
     group_empty = true,
   },
+  modified = {
+    enable = true,
+    show_on_dirs = true,
+    show_on_open_dirs = true,
+  },
 }
 -- Override NvimTreeFindFile with fucus = true
 vim.api.nvim_create_user_command("NvimTreeFindFile", function(res)
