@@ -271,12 +271,11 @@ require("trouble").setup{}
 
 require('tabby.tabline').use_preset('tab_only', {
   theme = {
-    fill = 'TabLineFill', -- tabline background
-    head = 'TabLine', -- head element highlight
-    current_tab = 'TabLineSel', -- current tab label highlight
-    tab = 'TabLine', -- other tab label highlight
-    win = 'TabLine', -- window highlight
-    tail = 'TabLine', -- tail element highlight
+    fill = 'Visual', -- tabline background
+    head = 'StatusLine', -- head element highlight
+    tab = 'StatusLine', -- other tab label highlight
+    win = 'StatusLine', -- window highlight
+    tail = 'StatusLine', -- tail element highlight
   },
   nerdfont = true, -- whether use nerdfont
   buf_name = {
