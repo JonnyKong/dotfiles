@@ -1,8 +1,10 @@
 vim.g.mapleader = " "
 
 -- telescope
-vim.api.nvim_set_keymap("n", "<c-p>", "<cmd>Telescope find_files<CR>", {})
-vim.api.nvim_set_keymap("n", "<s-f>", "<cmd>Telescope live_grep<CR>", {})
+local builtin = require('telescope.builtin')
+vim.keymap.set("n", "<c-p>", builtin.find_files, {})
+vim.keymap.set("n", "<s-f>", builtin.live_grep, {})
+vim.keymap.set("n", "<s-c>", builtin.colorscheme, {})
 -- make telescope close with single esc in insert mode
 local actions = require("telescope.actions")
 require("telescope").setup({
