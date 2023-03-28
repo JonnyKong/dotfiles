@@ -81,6 +81,11 @@ require("nvim-tree").setup {
   },
   renderer = {
     group_empty = true,
+    icons = {
+      show = {
+        folder_arrow = false,
+      },
+    },
   },
   modified = {
     enable = true,
