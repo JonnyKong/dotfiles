@@ -241,7 +241,7 @@ require('lualine').setup {
       end,
     }},
     lualine_c = {{ navic.get_location, cond = navic.is_available }},
-    lualine_x = {'searchcount', 'fileformat', 'filetype'},
+    lualine_x = {'fileformat', 'filetype'},
     lualine_y = {'location'},
     lualine_z = {}
   },
