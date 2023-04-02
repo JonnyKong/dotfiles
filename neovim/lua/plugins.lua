@@ -64,7 +64,7 @@ cmd "autocmd FileType c,cpp,java setlocal commentstring=//\\ %s"
 require("nvim-autopairs").setup {}
 
 require'nvim-treesitter.configs'.setup {
-    -- A list of parser names, or "all"
+  -- A list of parser names, or "all"
   ensure_installed = { "c", "cpp", "java", "python", "bash" },
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
@@ -100,7 +100,7 @@ end, { bang = true, bar = true })
 
 require("mason").setup()
 require('mason-lspconfig').setup({
-    ensure_installed = { 'pyright', 'clangd', 'jdtls', 'bashls' }
+    ensure_installed = { 'pyright', 'clangd', 'jdtls', 'bashls', 'julials' }
 })
 require('mason-tool-installer').setup{
     ensure_installed = { 'reorder-python-imports', 'shfmt', 'google-java-format' }
@@ -209,9 +209,9 @@ vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
 vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
 vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 
-require('lspconfig')['pyright'].setup{ on_attach = on_attach }
-require('lspconfig')['clangd'].setup{ on_attach = on_attach }
-require('lspconfig')['bashls'].setup{ on_attach = on_attach }
+for _, ls in ipairs({ "pyright", "clangd", "bashls", "julials" }) do
+    require('lspconfig')[ls].setup{ on_attach = on_attach }
+end
 
 require('lualine').setup {
   options = {
