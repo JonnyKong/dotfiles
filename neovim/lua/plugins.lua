@@ -6,55 +6,55 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 require('packer').startup(function()
-    use 'wbthomason/packer.nvim'
-    use {
-        'nvim-telescope/telescope.nvim',
-        requires = {
-            {'nvim-lua/plenary.nvim'},
-            {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'}
-        }
-    }
-    use 'tpope/vim-surround'
-    use 'lukas-reineke/indent-blankline.nvim'
-    use 'marko-cerovac/material.nvim'
-    use 'tpope/vim-commentary'
-    use 'dense-analysis/ale'
-    use 'editorconfig/editorconfig-vim'
-    use 'projekt0n/github-nvim-theme'
-    use 'nvim-lua/plenary.nvim'
-    use {'lewis6991/gitsigns.nvim', config=function() require('gitsigns').setup() end }
-    use 'NLKNguyen/papercolor-theme'
-    use 'tpope/vim-fugitive'
-    use 'kyazdani42/nvim-web-devicons'
-    use 'lervag/vimtex'
-    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-    use 'kyazdani42/nvim-tree.lua'
-    use 'EdenEast/nightfox.nvim'
-    -- use 'github/copilot.vim'
-    use({
-        "iamcco/markdown-preview.nvim",
-        run = function() vim.fn["mkdp#util#install"]() end,
-    })
-    use 'liuchengxu/vista.vim'
-    use 'chrisbra/csv.vim'
-    use 'williamboman/mason.nvim'
-    use 'williamboman/mason-lspconfig.nvim'
-    use 'neovim/nvim-lspconfig'
-    use 'hrsh7th/cmp-nvim-lsp'
-    use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/cmp-path'
-    use 'hrsh7th/cmp-cmdline'
-    use 'hrsh7th/nvim-cmp'
-    use 'hrsh7th/vim-vsnip'
-    use 'hrsh7th/vim-vsnip-integ'
-    use 'onsails/lspkind.nvim'
-    use 'nvim-lualine/lualine.nvim'
-    use 'windwp/nvim-autopairs'
-    use 'SmiteshP/nvim-navic'
-    use 'WhoIsSethDaniel/mason-tool-installer.nvim'
-    use 'folke/trouble.nvim'
-    use 'nanozuki/tabby.nvim'
-    use 'mfussenegger/nvim-jdtls'
+  use 'wbthomason/packer.nvim'
+  use {
+      'nvim-telescope/telescope.nvim',
+      requires = {
+          {'nvim-lua/plenary.nvim'},
+          {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'}
+      }
+  }
+  use 'tpope/vim-surround'
+  use 'lukas-reineke/indent-blankline.nvim'
+  use 'marko-cerovac/material.nvim'
+  use 'tpope/vim-commentary'
+  use 'dense-analysis/ale'
+  use 'editorconfig/editorconfig-vim'
+  use 'projekt0n/github-nvim-theme'
+  use 'nvim-lua/plenary.nvim'
+  use {'lewis6991/gitsigns.nvim', config=function() require('gitsigns').setup() end }
+  use 'NLKNguyen/papercolor-theme'
+  use 'tpope/vim-fugitive'
+  use 'kyazdani42/nvim-web-devicons'
+  use 'lervag/vimtex'
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use 'kyazdani42/nvim-tree.lua'
+  use 'EdenEast/nightfox.nvim'
+  -- use 'github/copilot.vim'
+  use({
+      "iamcco/markdown-preview.nvim",
+      run = function() vim.fn["mkdp#util#install"]() end,
+  })
+  use 'liuchengxu/vista.vim'
+  use 'chrisbra/csv.vim'
+  use 'williamboman/mason.nvim'
+  use 'williamboman/mason-lspconfig.nvim'
+  use 'neovim/nvim-lspconfig'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-cmdline'
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/vim-vsnip'
+  use 'hrsh7th/vim-vsnip-integ'
+  use 'onsails/lspkind.nvim'
+  use 'nvim-lualine/lualine.nvim'
+  use 'windwp/nvim-autopairs'
+  use 'SmiteshP/nvim-navic'
+  use 'WhoIsSethDaniel/mason-tool-installer.nvim'
+  use 'folke/trouble.nvim'
+  use 'nanozuki/tabby.nvim'
+  use 'mfussenegger/nvim-jdtls'
 end)
 
 local cmd = vim.cmd
@@ -65,7 +65,7 @@ require("nvim-autopairs").setup {}
 
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
-  ensure_installed = { "c", "cpp", "java", "python", "bash" },
+  ensure_installed = { "c", "cpp", "java", "python", "bash", "lua" },
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
   highlight = {
@@ -95,15 +95,15 @@ require("nvim-tree").setup {
 }
 -- Override NvimTreeFindFile with fucus = true
 vim.api.nvim_create_user_command("NvimTreeFindFile", function(res)
-    require("nvim-tree.api").tree.find_file { open = true, update_root = res.bang, focus = true }
+  require("nvim-tree.api").tree.find_file { open = true, update_root = res.bang, focus = true }
 end, { bang = true, bar = true })
 
 require("mason").setup()
 require('mason-lspconfig').setup({
-    ensure_installed = { 'pyright', 'clangd', 'jdtls', 'bashls', 'julials' }
+  ensure_installed = { 'pyright', 'clangd', 'jdtls', 'bashls' }
 })
 require('mason-tool-installer').setup{
-    ensure_installed = { 'reorder-python-imports', 'shfmt', 'google-java-format' }
+  ensure_installed = { 'reorder-python-imports', 'shfmt', 'google-java-format' }
 }
 
 local lspkind = require('lspkind')
@@ -260,11 +260,11 @@ require('lualine').setup {
 }
 
 require("indent_blankline").setup {
-    -- for example, context is off by default, use this to turn it on
-    show_current_context = true,
-    show_current_context_start = false,
-    -- treesitter to calculate indentation when possible
-    use_treesitter=true,
+  -- for example, context is off by default, use this to turn it on
+  show_current_context = true,
+  show_current_context_start = false,
+  -- treesitter to calculate indentation when possible
+  use_treesitter=true,
 }
 
 require("trouble").setup{}
