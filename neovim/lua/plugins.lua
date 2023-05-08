@@ -19,7 +19,6 @@ require('packer').startup(function()
   use 'marko-cerovac/material.nvim'
   use 'tpope/vim-commentary'
   use 'dense-analysis/ale'
-  use 'editorconfig/editorconfig-vim'
   use 'projekt0n/github-nvim-theme'
   use 'nvim-lua/plenary.nvim'
   use {'lewis6991/gitsigns.nvim', config=function() require('gitsigns').setup() end }
@@ -83,7 +82,7 @@ require("nvim-tree").setup {
     group_empty = true,
     icons = {
       show = {
-        folder_arrow = false,
+        folder_arrow = true,
       },
     },
   },
