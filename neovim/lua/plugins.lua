@@ -54,6 +54,7 @@ require('packer').startup(function()
   use 'folke/trouble.nvim'
   use 'nanozuki/tabby.nvim'
   use 'mfussenegger/nvim-jdtls'
+  use 'kdheepak/JuliaFormatter.vim'
 end)
 
 local cmd = vim.cmd
@@ -276,7 +277,7 @@ require('tabby.tabline').use_preset('tab_only', {
     win = 'StatusLine', -- window highlight
     tail = 'StatusLine', -- tail element highlight
   },
-  nerdfont = true, -- whether use nerdfont
+  nerdfont = false,
   buf_name = {
       mode = "'unique'|'relative'|'tail'|'shorten'",
   },

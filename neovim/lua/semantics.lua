@@ -1,10 +1,4 @@
 vim.g.ale_set_loclist = 0
-vim.g.ale_linters = { 
-    python = {'flake8'},
-    c = {'clangd'},
-    cpp = {'clangd'},
-    sh = {'shellcheck'},
-}
 vim.g.ale_fixers = {
     python = {'autopep8', 'reorder-python-imports'},
     c = {'clang-format'},
