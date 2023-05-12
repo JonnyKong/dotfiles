@@ -247,8 +247,13 @@ require('lualine').setup {
   },
   inactive_sections = {
     lualine_a = {},
-    lualine_b = {},
-    lualine_c = {'filename'},
+    lualine_b = {{
+      'filename',
+      color = function(section)
+        return { gui = vim.bo.modified and 'italic,bold' or '' }
+      end,
+    }},
+    lualine_c = {},
     lualine_x = {},
     lualine_y = {},
     lualine_z = {}
