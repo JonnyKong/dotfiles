@@ -8,12 +8,18 @@ require('material').setup({
 		sidebars = true, -- Enable contrast for sidebar-like windows ( for example Nvim-Tree )
 		floating_windows = true, -- Enable contrast for floating windows
 	},
+    plugins = {
+        "gitsigns",
+        "telescope",
+        "nvim-tree",
+        "nvim-cmp",
+    }
 })
 
 vim.g.material_style = "darker"
 vim.cmd([[
-" colorscheme material
+colorscheme material
 " colorscheme github_dark_colorblind
 " colorscheme PaperColor
-colorscheme carbonfox
+" colorscheme carbonfox
 ]])
