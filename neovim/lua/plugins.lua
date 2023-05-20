@@ -55,6 +55,8 @@ require('packer').startup(function()
   use 'nanozuki/tabby.nvim'
   use 'mfussenegger/nvim-jdtls'
   use 'kdheepak/JuliaFormatter.vim'
+  use 'ray-x/lsp_signature.nvim'
+  use 'nvim-treesitter/nvim-treesitter-context'
 end)
 
 local cmd = vim.cmd
@@ -287,3 +289,11 @@ require('tabby.tabline').use_preset('tab_only', {
       mode = "'unique'|'relative'|'tail'|'shorten'",
   },
 })
+
+require('lsp_signature').setup({})
+
+require('treesitter-context').setup({
+    line_numbers = false,
+})
+-- hi TreesitterContextBottom gui=underline guisp=Grey
+vim.api.nvim_set_hl(0, 'TreesitterContextBottom', { underline=true, special="Grey" })
