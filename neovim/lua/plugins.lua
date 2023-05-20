@@ -292,8 +292,6 @@ require('tabby.tabline').use_preset('tab_only', {
 
 require('lsp_signature').setup({})
 
-require('treesitter-context').setup({
-    line_numbers = false,
-})
+require('treesitter-context').setup({})
 -- hi TreesitterContextBottom gui=underline guisp=Grey
 vim.api.nvim_set_hl(0, 'TreesitterContextBottom', { underline=true, special="Grey" })
