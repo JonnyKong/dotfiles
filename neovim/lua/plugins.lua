@@ -56,6 +56,7 @@ require('packer').startup(function()
   use 'mfussenegger/nvim-jdtls'
   use 'kdheepak/JuliaFormatter.vim'
   use 'nvim-treesitter/nvim-treesitter-context'
+  use 'sindrets/diffview.nvim'
 end)
 
 local cmd = vim.cmd
