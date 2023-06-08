@@ -13,6 +13,9 @@ require('material').setup({
         "telescope",
         "nvim-tree",
         "nvim-cmp",
+    },
+    custom_highlights = {
+        Search = { fg = "#000000", bg = "#FADB2F", bold = true },
     }
 })
 
