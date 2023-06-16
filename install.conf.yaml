@@ -8,6 +8,7 @@
     ~/.zshrc: zshrc
     ~/.ideavimrc: ideavimrc
     ~/.tmux.conf: tmux.conf
+    ~/.visidatarc: visidatarc
     ~/.config/nvim/init.lua: neovim/init.lua
     ~/.config/nvim/lua: neovim/lua
     ~/.config/nvim/ftplugin: neovim/ftplugin
