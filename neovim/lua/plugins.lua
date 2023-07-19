@@ -57,6 +57,7 @@ require('packer').startup(function()
   use 'kdheepak/JuliaFormatter.vim'
   use 'nvim-treesitter/nvim-treesitter-context'
   use 'sindrets/diffview.nvim'
+  use 'mrjones2014/smart-splits.nvim'
 end)
 
 local cmd = vim.cmd
@@ -294,3 +295,8 @@ require('treesitter-context').setup({
     mode = 'topline',
 })
 vim.api.nvim_set_hl(0, 'TreesitterContextBottom', { underline=true, special="Grey" })
+
+vim.keymap.set('n', '<C-h>', require('smart-splits').resize_left)
+vim.keymap.set('n', '<C-j>', require('smart-splits').resize_down)
+vim.keymap.set('n', '<C-k>', require('smart-splits').resize_up)
+vim.keymap.set('n', '<C-l>', require('smart-splits').resize_right)
