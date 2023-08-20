@@ -97,3 +97,5 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.0/bin:$PATH"
 
 export ANDROID_NDK_HOME=~/Library/Android/sdk/ndk/22.1.7171670
+
+export PATH="/opt/homebrew/bin:$PATH"
