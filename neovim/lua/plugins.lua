@@ -12,6 +12,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
+vim.g.maplocalleader = ","
 
 require("lazy").setup({
   'nvim-telescope/telescope.nvim',
@@ -70,6 +71,7 @@ require("lazy").setup({
   'sindrets/diffview.nvim',
   'mrjones2014/smart-splits.nvim',
   'christoomey/vim-tmux-navigator',
+  'lervag/vimtex',
 })
 
 local cmd = vim.cmd
