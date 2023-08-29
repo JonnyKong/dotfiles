@@ -1,65 +1,76 @@
--- Install packer
-local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-end
-
-require('packer').startup(function()
-  use 'wbthomason/packer.nvim'
-  use {
-      'nvim-telescope/telescope.nvim',
-      requires = {
-          {'nvim-lua/plenary.nvim'},
-          {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'}
-      }
-  }
-  use 'tpope/vim-surround'
-  use 'lukas-reineke/indent-blankline.nvim'
-  use 'marko-cerovac/material.nvim'
-  use 'tpope/vim-commentary'
-  use 'dense-analysis/ale'
-  use 'projekt0n/github-nvim-theme'
-  use 'nvim-lua/plenary.nvim'
-  use {'lewis6991/gitsigns.nvim', config=function() require('gitsigns').setup() end }
-  use 'NLKNguyen/papercolor-theme'
-  use 'tpope/vim-fugitive'
-  use 'kyazdani42/nvim-web-devicons'
-  use 'lervag/vimtex'
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-  use 'kyazdani42/nvim-tree.lua'
-  use 'EdenEast/nightfox.nvim'
-  -- use 'github/copilot.vim'
-  use({
-      "iamcco/markdown-preview.nvim",
-      run = function() vim.fn["mkdp#util#install"]() end,
+-- Install lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
   })
-  use 'liuchengxu/vista.vim'
-  use 'chrisbra/csv.vim'
-  use 'williamboman/mason.nvim'
-  use 'williamboman/mason-lspconfig.nvim'
-  use 'neovim/nvim-lspconfig'
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-cmdline'
-  use 'hrsh7th/nvim-cmp'
-  use 'hrsh7th/vim-vsnip'
-  use 'hrsh7th/vim-vsnip-integ'
-  use 'onsails/lspkind.nvim'
-  use 'nvim-lualine/lualine.nvim'
-  use 'windwp/nvim-autopairs'
-  use 'SmiteshP/nvim-navic'
-  use 'WhoIsSethDaniel/mason-tool-installer.nvim'
-  use 'folke/trouble.nvim'
-  use 'nanozuki/tabby.nvim'
-  use 'mfussenegger/nvim-jdtls'
-  use 'kdheepak/JuliaFormatter.vim'
-  use 'nvim-treesitter/nvim-treesitter-context'
-  use 'sindrets/diffview.nvim'
-  use 'mrjones2014/smart-splits.nvim'
-  use 'christoomey/vim-tmux-navigator'
-end)
+end
+vim.opt.rtp:prepend(lazypath)
+vim.g.mapleader = " "
+
+require("lazy").setup({
+  'nvim-telescope/telescope.nvim',
+  {
+      'nvim-telescope/telescope-fzf-native.nvim',
+      build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+  },
+  'tpope/vim-surround',
+  'lukas-reineke/indent-blankline.nvim',
+  'marko-cerovac/material.nvim',
+  'tpope/vim-commentary',
+  'dense-analysis/ale',
+  'projekt0n/github-nvim-theme',
+  'nvim-lua/plenary.nvim',
+  'lewis6991/gitsigns.nvim',
+  'NLKNguyen/papercolor-theme',
+  'tpope/vim-fugitive',
+  'kyazdani42/nvim-web-devicons',
+  'lervag/vimtex',
+  {
+    'nvim-treesitter/nvim-treesitter',
+    build = ':TSUpdate',
+  },
+  'kyazdani42/nvim-tree.lua',
+  'EdenEast/nightfox.nvim',
+  {
+     "iamcco/markdown-preview.nvim",
+     build = "cd app && npm install",
+     ft = { "markdown" },
+     config = function()
+       vim.g.mkdp_filetypes = { "markdown" }
+     end,
+  },
+  'liuchengxu/vista.vim',
+  'chrisbra/csv.vim',
+  'williamboman/mason.nvim',
+  'williamboman/mason-lspconfig.nvim',
+  'neovim/nvim-lspconfig',
+  'hrsh7th/cmp-nvim-lsp',
+  'hrsh7th/cmp-buffer',
+  'hrsh7th/cmp-path',
+  'hrsh7th/cmp-cmdline',
+  'hrsh7th/nvim-cmp',
+  'hrsh7th/vim-vsnip',
+  'hrsh7th/vim-vsnip-integ',
+  'onsails/lspkind.nvim',
+  'nvim-lualine/lualine.nvim',
+  'windwp/nvim-autopairs',
+  'SmiteshP/nvim-navic',
+  'WhoIsSethDaniel/mason-tool-installer.nvim',
+  'folke/trouble.nvim',
+  'nanozuki/tabby.nvim',
+  'mfussenegger/nvim-jdtls',
+  'kdheepak/JuliaFormatter.vim',
+  'nvim-treesitter/nvim-treesitter-context',
+  'sindrets/diffview.nvim',
+  'mrjones2014/smart-splits.nvim',
+  'christoomey/vim-tmux-navigator',
+})
 
 local cmd = vim.cmd
 cmd "au TextYankPost * silent! lua vim.highlight.on_yank({timeout = 300})"
@@ -76,6 +87,8 @@ require'nvim-treesitter.configs'.setup {
     enable = true,    
   }
 }
+
+require('gitsigns').setup()
 
 require("nvim-tree").setup {
   git = {
