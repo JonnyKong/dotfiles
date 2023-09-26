@@ -259,8 +259,8 @@ require('lualine').setup {
         return { gui = vim.bo.modified and 'italic,bold' or '' }
       end,
     }},
-    lualine_c = {{ navic.get_location, cond = navic.is_available }},
-    lualine_x = {'fileformat', 'filetype'},
+    lualine_c = {},
+    lualine_x = {'branch', 'fileformat', 'filetype'},
     lualine_y = {'location'},
     lualine_z = {}
   },

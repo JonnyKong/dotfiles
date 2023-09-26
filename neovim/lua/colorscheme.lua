@@ -23,6 +23,6 @@ vim.g.material_style = "darker"
 vim.cmd([[
 " colorscheme material
 " colorscheme github_dark_colorblind
-" colorscheme PaperColor
-colorscheme carbonfox
+colorscheme PaperColor
+" colorscheme carbonfox
 ]])
