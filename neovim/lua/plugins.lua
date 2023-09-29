@@ -47,7 +47,6 @@ require("lazy").setup({
      end,
   },
   'liuchengxu/vista.vim',
-  'chrisbra/csv.vim',
   'williamboman/mason.nvim',
   'williamboman/mason-lspconfig.nvim',
   'neovim/nvim-lspconfig',
