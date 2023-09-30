@@ -21,7 +21,7 @@ require("lazy").setup({
       build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
   },
   'tpope/vim-surround',
-  'lukas-reineke/indent-blankline.nvim',
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
   'marko-cerovac/material.nvim',
   'tpope/vim-commentary',
   'dense-analysis/ale',
@@ -282,13 +282,7 @@ require('lualine').setup {
   extensions = {}
 }
 
-require("indent_blankline").setup {
-  -- for example, context is off by default, use this to turn it on
-  show_current_context = true,
-  show_current_context_start = false,
-  -- treesitter to calculate indentation when possible
-  use_treesitter=true,
-}
+require("ibl").setup()
 
 require("trouble").setup{}
 
