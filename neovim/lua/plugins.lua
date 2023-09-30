@@ -282,7 +282,9 @@ require('lualine').setup {
   extensions = {}
 }
 
-require("ibl").setup()
+require("ibl").setup {
+    scope = { enabled = false },
+}
 
 require("trouble").setup{}
 
