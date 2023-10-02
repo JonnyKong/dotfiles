@@ -118,10 +118,20 @@ end, { bang = true, bar = true })
 
 require("mason").setup()
 require('mason-lspconfig').setup({
-  ensure_installed = { 'pyright', 'clangd', 'jdtls', 'bashls' }
+  ensure_installed = {
+    'pyright',
+    'clangd',
+    'jdtls',
+    'bashls',
+  }
 })
 require('mason-tool-installer').setup{
-  ensure_installed = { 'reorder-python-imports', 'shfmt', 'google-java-format' }
+  ensure_installed = {
+    'reorder-python-imports',
+    'shfmt',
+    'google-java-format',
+    'prettier',
+  }
 }
 
 local lspkind = require('lspkind')
@@ -283,7 +293,8 @@ require('lualine').setup {
 }
 
 require("ibl").setup {
-    scope = { enabled = false },
+  indent = { highlight = highlight, char = "▏" },
+  scope = { enabled = false },
 }
 
 require("trouble").setup{}
