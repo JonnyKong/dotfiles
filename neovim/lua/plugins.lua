@@ -315,6 +315,7 @@ require('tabby.tabline').use_preset('tab_only', {
 
 require('treesitter-context').setup({
     mode = 'topline',
+    multiline_threshold = 1,
 })
 vim.api.nvim_set_hl(0, 'TreesitterContextBottom', { underline=true, special="Grey" })
 
