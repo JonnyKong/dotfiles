@@ -110,6 +110,9 @@ require("nvim-tree").setup {
     show_on_dirs = true,
     show_on_open_dirs = true,
   },
+  view = {
+    width = 45,
+  },
 }
 -- Override NvimTreeFindFile with fucus = true
 vim.api.nvim_create_user_command("NvimTreeFindFile", function(res)
@@ -265,7 +268,7 @@ require('lualine').setup {
     lualine_b = {{
       'filename',
       color = function(section)
-        return { gui = vim.bo.modified and 'italic,bold' or '' }
+        return { gui = vim.bo.modified and 'bold' or '' }
       end,
     }},
     lualine_c = {},
