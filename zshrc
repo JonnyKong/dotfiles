@@ -115,3 +115,8 @@ export PATH=/opt/homebrew/bin:$PATH
 
 alias vim="nvim"
 alias vi="nvim"
+
+# https://jekyllrb.com/docs/installation/macos/
+source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
+source /opt/homebrew/opt/chruby/share/chruby/auto.sh
+chruby ruby-3.1.3
