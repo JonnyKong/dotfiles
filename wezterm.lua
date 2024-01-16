@@ -14,6 +14,7 @@ end
 
 config.color_scheme = 'Vs Code Dark+ (Gogh)'
 config.font = wezterm.font 'JetBrains Mono'
+config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' } -- No ligatures
 config.font_size = 14.0
 config.line_height = 1.17
 config.cell_width = 0.9
