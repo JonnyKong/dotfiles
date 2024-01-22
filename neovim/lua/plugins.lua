@@ -27,7 +27,6 @@ require("lazy").setup({
   'dense-analysis/ale',
   'projekt0n/github-nvim-theme',
   'nvim-lua/plenary.nvim',
-  'lewis6991/gitsigns.nvim',
   'NLKNguyen/papercolor-theme',
   'tpope/vim-fugitive',
   'kyazdani42/nvim-web-devicons',
@@ -62,10 +61,9 @@ require("lazy").setup({
   'windwp/nvim-autopairs',
   'SmiteshP/nvim-navic',
   'WhoIsSethDaniel/mason-tool-installer.nvim',
-  'folke/trouble.nvim',
   'nanozuki/tabby.nvim',
   'mfussenegger/nvim-jdtls',
-  'kdheepak/JuliaFormatter.vim',
+  -- 'kdheepak/JuliaFormatter.vim',
   'nvim-treesitter/nvim-treesitter-context',
   'sindrets/diffview.nvim',
   'mrjones2014/smart-splits.nvim',
@@ -95,8 +93,6 @@ require("nvim-treesitter.configs").setup {
     end
   end,
 }
-
-require('gitsigns').setup()
 
 require("nvim-tree").setup {
   git = {
@@ -306,8 +302,6 @@ require("ibl").setup {
   indent = { highlight = highlight, char = "▏" },
   scope = { enabled = false },
 }
-
-require("trouble").setup{}
 
 require('tabby.tabline').use_preset('tab_only', {
   theme = {
