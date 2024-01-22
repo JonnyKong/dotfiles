@@ -27,6 +27,7 @@ require("lazy").setup({
   'dense-analysis/ale',
   'projekt0n/github-nvim-theme',
   'nvim-lua/plenary.nvim',
+  'lewis6991/gitsigns.nvim',
   'NLKNguyen/papercolor-theme',
   'tpope/vim-fugitive',
   'kyazdani42/nvim-web-devicons',
@@ -93,6 +94,8 @@ require("nvim-treesitter.configs").setup {
     end
   end,
 }
+
+require('gitsigns').setup()
 
 require("nvim-tree").setup {
   git = {
