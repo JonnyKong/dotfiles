@@ -271,13 +271,13 @@ require('lualine').setup {
   },
   sections = {
     lualine_a = {'mode'},
-    lualine_b = {{
+    lualine_b = {},
+    lualine_c = {{
       'filename',
       color = function(section)
         return { gui = vim.bo.modified and 'bold' or '' }
       end,
     }},
-    lualine_c = {},
     lualine_x = {'branch', 'fileformat', 'filetype'},
     lualine_y = {'location'},
     lualine_z = {}
