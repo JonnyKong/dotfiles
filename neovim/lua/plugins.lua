@@ -80,7 +80,7 @@ require("nvim-autopairs").setup {}
 
 require("nvim-treesitter.configs").setup {
   -- A list of parser names, or "all"
-  ensure_installed = { "c", "cpp", "java", "python", "bash", "lua" },
+  ensure_installed = { 'c', 'cpp', 'java', 'python', 'bash', 'lua' },
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
   highlight = {
@@ -132,6 +132,7 @@ require('mason-lspconfig').setup({
     'clangd',
     'jdtls',
     'bashls',
+    'ruff_lsp',
   }
 })
 require('mason-tool-installer').setup{
@@ -246,7 +247,7 @@ vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
 vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
 vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 
-for _, ls in ipairs({ "pyright", "clangd", "bashls", "julials" }) do
+for _, ls in ipairs({ "pyright", "clangd", "bashls", "julials", 'ruff_lsp' }) do
     require('lspconfig')[ls].setup{ on_attach = on_attach }
 end
 
