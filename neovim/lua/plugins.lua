@@ -137,7 +137,6 @@ require('mason-lspconfig').setup({
 })
 require('mason-tool-installer').setup{
   ensure_installed = {
-    'reorder-python-imports',
     'shfmt',
     'google-java-format',
     'prettier',
