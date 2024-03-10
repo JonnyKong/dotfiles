@@ -70,6 +70,7 @@ require("lazy").setup({
   'mrjones2014/smart-splits.nvim',
   'christoomey/vim-tmux-navigator',
   'lervag/vimtex',
+  'tomasiser/vim-code-dark',
 })
 
 local cmd = vim.cmd
@@ -307,17 +308,7 @@ require("ibl").setup {
 }
 
 require('tabby.tabline').use_preset('tab_only', {
-  theme = {
-    fill = 'Visual', -- tabline background
-    head = 'StatusLine', -- head element highlight
-    tab = 'StatusLine', -- other tab label highlight
-    win = 'StatusLine', -- window highlight
-    tail = 'StatusLine', -- tail element highlight
-  },
   nerdfont = false,
-  buf_name = {
-      mode = "'unique'|'relative'|'tail'|'shorten'",
-  },
 })
 
 require('treesitter-context').setup({
