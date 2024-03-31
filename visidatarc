@@ -2,3 +2,4 @@ options.color_menu_help='black on 34 green'
 options.numeric_binning=True
 options.histogram_bins=20
 options.disp_float_fmt='{:.04f}'
+options.default_height=10
