@@ -58,7 +58,7 @@ require("lazy").setup({
   'hrsh7th/vim-vsnip',
   'hrsh7th/vim-vsnip-integ',
   'onsails/lspkind.nvim',
-  -- 'nvim-lualine/lualine.nvim',
+  'nvim-lualine/lualine.nvim',
   'windwp/nvim-autopairs',
   'WhoIsSethDaniel/mason-tool-installer.nvim',
   'nanozuki/tabby.nvim',
@@ -69,6 +69,11 @@ require("lazy").setup({
   'christoomey/vim-tmux-navigator',
   'lervag/vimtex',
   'tomasiser/vim-code-dark',
+  {
+    "m4xshen/hardtime.nvim",
+    dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+    opts = {}
+  },
 })
 
 local cmd = vim.cmd
@@ -244,56 +249,56 @@ for _, ls in ipairs({ "pyright", "clangd", "bashls", "julials", 'ruff_lsp' }) do
     require('lspconfig')[ls].setup{ on_attach = on_attach }
 end
 
--- require('lualine').setup {
---   options = {
---     icons_enabled = true,
---     theme = 'auto',
---     component_separators = { left = '', right = ''},
---     section_separators = { left = '', right = ''},
---     disabled_filetypes = {
---       statusline = {},
---       winbar = {},
---     },
---     ignore_focus = {},
---     always_divide_middle = true,
---     globalstatus = false,
---     refresh = {
---       statusline = 1000,
---       tabline = 1000,
---       winbar = 1000,
---     }
---   },
---   sections = {
---     lualine_a = {'mode'},
---     lualine_b = {},
---     lualine_c = {{
---       'filename',
---       color = function(section)
---         return { gui = vim.bo.modified and 'bold' or '' }
---       end,
---     }},
---     lualine_x = {'branch', 'fileformat', 'filetype'},
---     lualine_y = {'location'},
---     lualine_z = {}
---   },
---   inactive_sections = {
---     lualine_a = {},
---     lualine_b = {{
---       'filename',
---       color = function(section)
---         return { gui = vim.bo.modified and 'italic,bold' or '' }
---       end,
---     }},
---     lualine_c = {},
---     lualine_x = {},
---     lualine_y = {},
---     lualine_z = {}
---   },
---   tabline = {},
---   winbar = {},
---   inactive_winbar = {},
---   extensions = {}
--- }
+require('lualine').setup {
+  options = {
+    icons_enabled = true,
+    theme = 'auto',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {
+      statusline = {},
+      winbar = {},
+    },
+    ignore_focus = {},
+    always_divide_middle = true,
+    globalstatus = false,
+    refresh = {
+      statusline = 1000,
+      tabline = 1000,
+      winbar = 1000,
+    }
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {},
+    lualine_c = {{
+      'filename',
+      color = function(section)
+        return { gui = vim.bo.modified and 'bold' or '' }
+      end,
+    }},
+    lualine_x = {'branch', 'fileformat', 'filetype'},
+    lualine_y = {'location'},
+    lualine_z = {}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {{
+      'filename',
+      color = function(section)
+        return { gui = vim.bo.modified and 'italic,bold' or '' }
+      end,
+    }},
+    lualine_c = {},
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  winbar = {},
+  inactive_winbar = {},
+  extensions = {}
+}
 
 require("ibl").setup {
   indent = { highlight = highlight, char = "▏" },
