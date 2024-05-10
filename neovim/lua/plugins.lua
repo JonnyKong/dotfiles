@@ -136,11 +136,11 @@ require('mason-lspconfig').setup({
     'clangd',
     'jdtls',
     'bashls',
-    'ruff_lsp',
   }
 })
 require('mason-tool-installer').setup{
   ensure_installed = {
+    'reorder-python-imports',
     'shfmt',
     'google-java-format',
     'prettier',
