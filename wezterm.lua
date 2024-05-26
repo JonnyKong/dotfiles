@@ -12,7 +12,7 @@ end
 
 -- This is where you actually apply your config choices
 
-config.color_scheme = 'Vs Code Dark+ (Gogh)'
+config.color_scheme = 'MaterialDark'
 config.font = wezterm.font 'JetBrains Mono'
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' } -- No ligatures
 config.font_size = 14.0

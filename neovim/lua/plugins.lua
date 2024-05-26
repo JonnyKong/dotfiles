@@ -69,11 +69,11 @@ require("lazy").setup({
   'christoomey/vim-tmux-navigator',
   'lervag/vimtex',
   'tomasiser/vim-code-dark',
-  {
-    "m4xshen/hardtime.nvim",
-    dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-    opts = {}
-  },
+  -- {
+  --   "m4xshen/hardtime.nvim",
+  --   dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+  --   opts = {}
+  -- },
 })
 
 local cmd = vim.cmd
