@@ -136,6 +136,7 @@ require('mason-lspconfig').setup({
     'clangd',
     'jdtls',
     'bashls',
+    'lua_ls',
   }
 })
 require('mason-tool-installer').setup{
@@ -245,7 +246,7 @@ vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
 vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
 vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 
-for _, ls in ipairs({ "pyright", "clangd", "bashls", "julials" }) do
+for _, ls in ipairs({ "pyright", "clangd", "bashls", "lua_ls", "julials" }) do
     require('lspconfig')[ls].setup{ on_attach = on_attach }
 end
 
