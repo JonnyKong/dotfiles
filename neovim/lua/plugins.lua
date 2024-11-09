@@ -31,7 +31,6 @@ require("lazy").setup({
   'NLKNguyen/papercolor-theme',
   'tpope/vim-fugitive',
   'kyazdani42/nvim-web-devicons',
-  'lervag/vimtex',
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
@@ -67,7 +66,12 @@ require("lazy").setup({
   'sindrets/diffview.nvim',
   'mrjones2014/smart-splits.nvim',
   'christoomey/vim-tmux-navigator',
-  'lervag/vimtex',
+  {
+    'lervag/vimtex',
+    init = function()
+      vim.g.vimtex_quickfix_open_on_warning = 0
+    end
+  },
   'tomasiser/vim-code-dark',
   -- {
   --   "m4xshen/hardtime.nvim",
