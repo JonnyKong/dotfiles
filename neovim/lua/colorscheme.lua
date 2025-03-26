@@ -22,7 +22,7 @@ require('material').setup({
 vim.g.material_style = "darker"
 vim.cmd([[
 " colorscheme material
-colorscheme github_dark_dimmed
-" colorscheme PaperColor
+" colorscheme github_dark_dimmed
+colorscheme PaperColor
 " colorscheme carbonfox
 ]])
