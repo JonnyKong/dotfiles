@@ -82,11 +82,6 @@ require("lazy").setup({
     end
   },
   'tomasiser/vim-code-dark',
-  -- {
-  --   "m4xshen/hardtime.nvim",
-  --   dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-  --   opts = {}
-  -- },
 })
 
 local cmd = vim.cmd
@@ -143,15 +138,6 @@ vim.api.nvim_create_user_command("NvimTreeFindFile", function(res)
 end, { bang = true, bar = true })
 
 require("mason").setup()
-require('mason-lspconfig').setup({
-  ensure_installed = {
-    'pyright',
-    'clangd',
-    'jdtls',
-    'bashls',
-    'lua_ls',
-  }
-})
 require('mason-tool-installer').setup{
   ensure_installed = {
     'reorder-python-imports',
@@ -235,11 +221,6 @@ cmp.setup.cmdline(':', {
 })
 
 -- Set up lspconfig.
-local on_attach = function(client, bufnr)
-  -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-end
-
 -- Set LSP key bindings globally so they also apply to nvim-jdtls
 -- See `:help vim.lsp.*` for documentation on any of the below functions
 local bufopts = { noremap=true, silent=true, buffer=bufnr }
@@ -259,8 +240,22 @@ vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
 vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
 vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 
-for _, ls in ipairs({ "pyright", "clangd", "bashls", "lua_ls", "julials" }) do
-    require('lspconfig')[ls].setup{ on_attach = on_attach }
+local servers = { 'pyright', 'clangd', 'bashls', 'lua_ls', 'julials' }
+
+-- Setup mason-lspconfig to install them
+require('mason-lspconfig').setup({
+  ensure_installed = servers
+})
+
+-- Use vim.lsp.enable for each server
+local on_attach = function(client, bufnr)
+  -- Enable completion triggered by <c-x><c-o>
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+end
+for _, server in ipairs(servers) do
+  vim.lsp.enable(server, {
+    on_attach = on_attach
+  })
 end
 
 require('lualine').setup()
