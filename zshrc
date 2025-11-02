@@ -120,4 +120,7 @@ alias vi="nvim"
 source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
 source /opt/homebrew/opt/chruby/share/chruby/auto.sh
 chruby ruby-3.1.3
+
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
+export PATH="/opt/homebrew/anaconda3/bin:$PATH"
