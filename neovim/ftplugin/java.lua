@@ -1,5 +1,5 @@
 local config = {
-    cmd = { os.getenv( "HOME" ) .. '/.local/share/nvim/mason/packages/jdtls/bin/jdtls'},
-    root_dir = vim.fs.dirname(vim.fs.find({'gradlew', '.git', 'mvnw'}, { upward = true })[1]),
+    cmd = { vim.fn.stdpath('data') .. '/mason/packages/jdtls/bin/jdtls' },
+    root_dir = vim.fs.root(0, { 'gradlew', '.git', 'mvnw' }) or vim.fn.getcwd(),
 }
 require('jdtls').start_or_attach(config)

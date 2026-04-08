@@ -1,6 +1,6 @@
 -- Install lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
@@ -13,6 +13,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 require("lazy").setup({
   'nvim-telescope/telescope.nvim',
@@ -30,12 +32,14 @@ require("lazy").setup({
   'lewis6991/gitsigns.nvim',
   'NLKNguyen/papercolor-theme',
   'tpope/vim-fugitive',
-  'kyazdani42/nvim-web-devicons',
+  'nvim-tree/nvim-web-devicons',
   {
     'nvim-treesitter/nvim-treesitter',
+    branch = 'main',
+    lazy = false,
     build = ':TSUpdate',
   },
-  'kyazdani42/nvim-tree.lua',
+  'nvim-tree/nvim-tree.lua',
   'EdenEast/nightfox.nvim',
   {
     -- https://github.com/iamcco/markdown-preview.nvim/issues/690#issuecomment-2254280534
@@ -55,8 +59,8 @@ require("lazy").setup({
     end,
   },
   'liuchengxu/vista.vim',
-  'williamboman/mason.nvim',
-  'williamboman/mason-lspconfig.nvim',
+  'mason-org/mason.nvim',
+  'mason-org/mason-lspconfig.nvim',
   'neovim/nvim-lspconfig',
   'hrsh7th/cmp-nvim-lsp',
   'hrsh7th/cmp-buffer',
@@ -87,28 +91,56 @@ require("lazy").setup({
   'tomasiser/vim-code-dark',
 })
 
-local cmd = vim.cmd
-cmd "au TextYankPost * silent! lua vim.highlight.on_yank({timeout = 300})"
-cmd "autocmd FileType c,cpp,java setlocal commentstring=//\\ %s"
+local config_augroup = vim.api.nvim_create_augroup("dotfiles_config", { clear = true })
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+  group = config_augroup,
+  callback = function()
+    vim.highlight.on_yank({ timeout = 300 })
+  end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+  group = config_augroup,
+  pattern = { 'c', 'cpp', 'java' },
+  callback = function(args)
+    vim.bo[args.buf].commentstring = '// %s'
+  end,
+})
 
 require("nvim-autopairs").setup {}
 
-require("nvim-treesitter.configs").setup {
-  -- A list of parser names, or "all"
-  ensure_installed = { 'c', 'cpp', 'java', 'python', 'bash', 'lua' },
-  -- Install parsers synchronously (only applied to `ensure_installed`)
-  sync_install = false,
-  highlight = {
-    enable = true,    
-  },
-  disable = function(lang, buf)
-    local max_filesize = 100 * 1024 -- 100 KB
-    local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-    if ok and stats and stats.size > max_filesize then
-      return true
-    end
-  end,
+local ts_langs = { 'bash', 'c', 'cpp', 'java', 'lua', 'python' }
+local ts_max_filesize = 100 * 1024 -- 100 KB
+
+require("nvim-treesitter").setup {
+  install_dir = vim.fn.stdpath("data") .. "/site",
 }
+
+if vim.fn.executable("tree-sitter") == 0 then
+  vim.schedule(function()
+    vim.notify(
+      "nvim-treesitter requires the `tree-sitter` CLI to install or update parsers on the `main` branch. Install it via your package manager or `cargo install tree-sitter-cli`.",
+      vim.log.levels.WARN
+    )
+  end)
+end
+
+vim.treesitter.language.register('bash', { 'sh', 'zsh' })
+
+vim.api.nvim_create_autocmd('FileType', {
+  group = config_augroup,
+  pattern = { 'c', 'cpp', 'java', 'lua', 'python', 'sh', 'zsh' },
+  callback = function(args)
+    local filename = vim.api.nvim_buf_get_name(args.buf)
+    local ok, stats = pcall(vim.uv.fs_stat, filename)
+    if ok and stats and stats.size > ts_max_filesize then
+      return
+    end
+
+    pcall(vim.treesitter.start, args.buf)
+  end,
+})
 
 require('gitsigns').setup()
 
@@ -152,6 +184,9 @@ require('mason-tool-installer').setup{
 
 local lspkind = require('lspkind')
 local cmp = require('cmp')
+local feedkey = function(keys)
+  vim.api.nvim_feedkeys(vim.keycode(keys), "", false)
+end
 cmp.setup({
   snippet = {
     -- REQUIRED - you must specify a snippet engine
@@ -168,7 +203,7 @@ cmp.setup({
       if cmp.visible() then
         cmp.select_next_item()
       elseif vim.fn["vsnip#available"](1) == 1 then
-        feedkey("<Plug>(vsnip-expand-or-jump)", "")
+        feedkey("<Plug>(vsnip-expand-or-jump)")
       else
         fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
       end
@@ -178,7 +213,7 @@ cmp.setup({
       if cmp.visible() then
         cmp.select_prev_item()
       elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-        feedkey("<Plug>(vsnip-jump-prev)", "")
+        feedkey("<Plug>(vsnip-jump-prev)")
       end
     end, { "i", "s" }),
   }),
@@ -223,48 +258,66 @@ cmp.setup.cmdline(':', {
   })
 })
 
--- Set up lspconfig.
--- Set LSP key bindings globally so they also apply to nvim-jdtls
--- See `:help vim.lsp.*` for documentation on any of the below functions
-local bufopts = { noremap=true, silent=true, buffer=bufnr }
-vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-vim.keymap.set('n', '<S-k>', vim.lsp.buf.signature_help, bufopts)
-vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-vim.keymap.set('n', '<space>wl', function()
-print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-end, bufopts)
-vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    local bufopts = { noremap = true, silent = true, buffer = args.buf }
+
+    vim.bo[args.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+    vim.keymap.set('n', '<S-k>', vim.lsp.buf.signature_help, bufopts)
+    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+    vim.keymap.set('n', '<space>wl', function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, bufopts)
+    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
+    vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+    vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+  end,
+})
 
 local servers = { 'pyright', 'clangd', 'bashls', 'lua_ls', 'julials' }
 
 -- Setup mason-lspconfig to install them
 require('mason-lspconfig').setup({
-  ensure_installed = servers
+  ensure_installed = servers,
+  automatic_enable = false,
 })
 
--- Use vim.lsp.enable for each server
-local on_attach = function(client, bufnr)
-  -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-end
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+vim.lsp.config('lua_ls', {
+  capabilities = capabilities,
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { 'vim' },
+      },
+      workspace = {
+        checkThirdParty = false,
+      },
+    },
+  },
+})
+
 for _, server in ipairs(servers) do
-  vim.lsp.enable(server, {
-    on_attach = on_attach
-  })
+  if server ~= 'lua_ls' then
+    vim.lsp.config(server, {
+      capabilities = capabilities,
+    })
+  end
+
+  vim.lsp.enable(server)
 end
 
 require('lualine').setup()
 
 require("ibl").setup {
-  indent = { highlight = highlight, char = "▏" },
+  indent = { char = "▏" },
   scope = { enabled = false },
 }
 

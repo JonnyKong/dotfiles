@@ -1,5 +1,7 @@
 -- telescope
 local builtin = require('telescope.builtin')
+local keymaps_augroup = vim.api.nvim_create_augroup("dotfiles_keymaps", { clear = true })
+
 vim.keymap.set("n", "<c-p>", builtin.find_files, {})
 vim.keymap.set("n", "<s-f>", builtin.live_grep, {})
 vim.keymap.set("n", "<s-c>", builtin.colorscheme, {})
@@ -16,17 +18,28 @@ require("telescope").setup({
 })
 
 -- nvimtree
-vim.api.nvim_set_keymap("n", "<c-c>", ":NvimTreeToggle<CR>", {})
-vim.api.nvim_set_keymap("n", "<c-f>", ":NvimTreeFindFile<CR>", {})
--- exit Vim if NERDTree is the only window left
-vim.api.nvim_command([[
-  autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-]])
+vim.keymap.set("n", "<c-c>", "<cmd>NvimTreeToggle<CR>")
+vim.keymap.set("n", "<c-f>", "<cmd>NvimTreeFindFile<CR>")
+
+vim.api.nvim_create_autocmd('BufEnter', {
+  group = keymaps_augroup,
+  callback = function()
+    if vim.fn.tabpagenr('$') == 1 and vim.fn.winnr('$') == 1 and vim.bo.filetype == 'NvimTree' then
+      vim.cmd.quit()
+    end
+  end,
+})
 
 -- remember last opened position
-vim.api.nvim_command([[
-  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-]])
+vim.api.nvim_create_autocmd('BufReadPost', {
+  group = keymaps_augroup,
+  callback = function()
+    local line = vim.fn.line([['"]])
+    if line > 0 and line <= vim.fn.line('$') then
+      vim.cmd.normal({ args = { [[g`"]] }, bang = true })
+    end
+  end,
+})
 
 -- -- Copilot
 -- vim.api.nvim_set_keymap("i", "<c-[>", "<Plug>(copilot-previous)", {})
@@ -36,7 +49,7 @@ vim.api.nvim_command([[
 -- vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 
 for i = 1,9,1 do
-  vim.api.nvim_set_keymap("n", "<leader>" .. i, i .. "gt", {})
+  vim.keymap.set("n", "<leader>" .. i, i .. "gt")
 end
 
 -- Search and highlight but not jump
