@@ -1,3 +1,8 @@
+local function is_meta()
+  local cwd = vim.fn.getcwd()
+  return cwd:find("/fbsource") ~= nil
+end
+
 -- Install lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.uv.fs_stat(lazypath) then
@@ -16,7 +21,7 @@ vim.g.maplocalleader = ","
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-require("lazy").setup({
+local plugins = {
   'nvim-telescope/telescope.nvim',
   {
       'nvim-telescope/telescope-fzf-native.nvim',
@@ -29,9 +34,7 @@ require("lazy").setup({
   'dense-analysis/ale',
   'projekt0n/github-nvim-theme',
   'nvim-lua/plenary.nvim',
-  'lewis6991/gitsigns.nvim',
   'NLKNguyen/papercolor-theme',
-  'tpope/vim-fugitive',
   'nvim-tree/nvim-web-devicons',
   {
     'nvim-treesitter/nvim-treesitter',
@@ -59,8 +62,6 @@ require("lazy").setup({
     end,
   },
   'liuchengxu/vista.vim',
-  'mason-org/mason.nvim',
-  'mason-org/mason-lspconfig.nvim',
   'neovim/nvim-lspconfig',
   'hrsh7th/cmp-nvim-lsp',
   'hrsh7th/cmp-buffer',
@@ -72,24 +73,37 @@ require("lazy").setup({
   'onsails/lspkind.nvim',
   'nvim-lualine/lualine.nvim',
   'windwp/nvim-autopairs',
-  'WhoIsSethDaniel/mason-tool-installer.nvim',
   'nanozuki/tabby.nvim',
   'mfussenegger/nvim-jdtls',
   'nvim-treesitter/nvim-treesitter-context',
   'sindrets/diffview.nvim',
   'mrjones2014/smart-splits.nvim',
   'christoomey/vim-tmux-navigator',
-  {
-    'lervag/vimtex',
-    init = function()
-      vim.g.vimtex_quickfix_open_on_warning = 0
-      -- vim.g.vimtex_compiler_latexmk_engines = {
-      --   _ = "-lualatex"
-      -- }
-    end
-  },
   'tomasiser/vim-code-dark',
-})
+}
+
+if not is_meta() then
+  vim.list_extend(plugins, {
+    'lewis6991/gitsigns.nvim',
+    'tpope/vim-fugitive',
+    'mason-org/mason.nvim',
+    'mason-org/mason-lspconfig.nvim',
+    'WhoIsSethDaniel/mason-tool-installer.nvim',
+    {
+      'lervag/vimtex',
+      init = function()
+        vim.g.vimtex_quickfix_open_on_warning = 0
+      end
+    },
+  })
+else
+  vim.list_extend(plugins, {
+    'nvimtools/none-ls.nvim',
+    { dir = "/usr/share/fb-editor-support/nvim", name = "meta.nvim" },
+  })
+end
+
+require("lazy").setup(plugins)
 
 local config_augroup = vim.api.nvim_create_augroup("dotfiles_config", { clear = true })
 
@@ -142,8 +156,6 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
-require('gitsigns').setup()
-
 require("nvim-tree").setup {
   git = {
     enable = true,
@@ -171,16 +183,6 @@ require("nvim-tree").setup {
 vim.api.nvim_create_user_command("NvimTreeFindFile", function(res)
   require("nvim-tree.api").tree.find_file { open = true, update_root = res.bang, focus = true }
 end, { bang = true, bar = true })
-
-require("mason").setup()
-require('mason-tool-installer').setup{
-  ensure_installed = {
-    'reorder-python-imports',
-    'shfmt',
-    'google-java-format',
-    'prettier',
-  }
-}
 
 local lspkind = require('lspkind')
 local cmp = require('cmp')
@@ -281,37 +283,50 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
-local servers = { 'pyright', 'clangd', 'bashls', 'lua_ls', 'julials' }
+if not is_meta() then
+  require('gitsigns').setup()
 
--- Setup mason-lspconfig to install them
-require('mason-lspconfig').setup({
-  ensure_installed = servers,
-  automatic_enable = false,
-})
+  require("mason").setup()
+  require('mason-tool-installer').setup{
+    ensure_installed = {
+      'reorder-python-imports',
+      'shfmt',
+      'google-java-format',
+      'prettier',
+    }
+  }
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-vim.lsp.config('lua_ls', {
-  capabilities = capabilities,
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { 'vim' },
-      },
-      workspace = {
-        checkThirdParty = false,
+  local servers = { 'pyright', 'clangd', 'bashls', 'lua_ls', 'julials' }
+
+  require('mason-lspconfig').setup({
+    ensure_installed = servers,
+    automatic_enable = false,
+  })
+
+  local capabilities = require('cmp_nvim_lsp').default_capabilities()
+  vim.lsp.config('lua_ls', {
+    capabilities = capabilities,
+    settings = {
+      Lua = {
+        diagnostics = {
+          globals = { 'vim' },
+        },
+        workspace = {
+          checkThirdParty = false,
+        },
       },
     },
-  },
-})
+  })
 
-for _, server in ipairs(servers) do
-  if server ~= 'lua_ls' then
-    vim.lsp.config(server, {
-      capabilities = capabilities,
-    })
+  for _, server in ipairs(servers) do
+    if server ~= 'lua_ls' then
+      vim.lsp.config(server, {
+        capabilities = capabilities,
+      })
+    end
+
+    vim.lsp.enable(server)
   end
-
-  vim.lsp.enable(server)
 end
 
 require('lualine').setup()
@@ -337,3 +352,35 @@ vim.keymap.set('n', '<S-Up>', require('smart-splits').resize_up)
 vim.keymap.set('n', '<S-Right>', require('smart-splits').resize_right)
 
 vim.g.clipboard = 'osc52'
+
+if is_meta() then
+  require("meta").setup()
+  require("meta.lsp")
+  vim.lsp.enable({
+    "fb-pyright-ls@meta",
+    "pyre@meta",
+    "pyre-codenav@meta",
+    "wasabi@meta",
+    "cppls@meta",
+    "buckls@meta",
+    "buck2@meta",
+  })
+
+  require("meta.hg").setup({
+    signs = {
+      add = {
+        char = "+",
+        hl = "DiffAdd",
+      },
+      delete = {
+        char = "_",
+        hl = "DiffDelete",
+      },
+    },
+    line_blame = {
+      enable = false,
+      highlight = "Comment",
+      prefix = string.rep(" ", 4),
+    },
+  })
+end
