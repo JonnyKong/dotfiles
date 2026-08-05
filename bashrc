@@ -119,6 +119,7 @@ fi
 export PATH=$HOME/usr/bin:$PATH
 export PKG_CONFIG_PATH=$HOME/usr/lib/pkgconfig:$PKG_CONFIG_PATH
 export LD_LIBRARY_PATH=$HOME/usr/lib:$LD_LIBRARY_PATH
+export EDITOR=nvim
 
 # Java
 # export JAVA_HOME=~/usr/java/jdk1.8.0_121
