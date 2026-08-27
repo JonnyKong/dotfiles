@@ -357,9 +357,7 @@ if is_meta() then
   require("meta").setup()
   require("meta.lsp")
   vim.lsp.enable({
-    "fb-pyright-ls@meta",
-    "pyre@meta",
-    "pyre-codenav@meta",
+    "pyrefly@meta",
     "wasabi@meta",
     "cppls@meta",
     "buckls@meta",
